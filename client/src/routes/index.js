@@ -1,10 +1,13 @@
 import React from  'react'
 import {Route,BrowserRouter } from 'react-router-dom'
 import Login from '../screens/Login'
+import signin from '../screens/signin'
 
 const Routes =()=>(
   <BrowserRouter>
-      <Route exact path="/" component={Login}/>
+      <Route exact path="/login" component={Login}/>
+      <Route exact path="/signin" component={signin}/>
+
   </BrowserRouter>
 )
 
