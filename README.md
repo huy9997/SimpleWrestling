@@ -12,14 +12,13 @@ Technologies used:
   Database:
   TBD
 
-How to install the project:
+How to install the dependencies:
 
   install npm modules in client:
     1. cd into client
     2. npm install
-  install npm modules  in api:
-    1. cd api
-    2. npm install
+  install npm modules for the node server:
+    1. npm install
 
 How to run the project:
 
@@ -28,6 +27,5 @@ How to run the project:
   2. npm start
 
   Run Backend
-  1. cd api
   2. run "node index.js"
   
