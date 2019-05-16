@@ -1,3 +1,6 @@
 module.exports = {
-  signUp: require("./signUp")
+  SignUp: require("./signUp"),
+  Login: require("./login"),
+  Search: require("./search"),
+  Signup: require("./signUp")
 };

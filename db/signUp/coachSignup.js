@@ -9,7 +9,7 @@ const coachSignup = (
   team,
   hometown
 ) => {
-  const CREATE_COACH = `INSERT INTO coach (first_name, last_name, email,password,dob,team,hometown) VALUES ($1, $2, $3,$4,$5,$6,$7) RETURNING admin_name`;
+  const CREATE_COACH = `INSERT INTO coach (first_name, last_name, email,password,dob,team,hometown,weightclass) VALUES ($1, $2, $3,$4,$5,$6,$7,$8) RETURNING admin_name`;
   return connect.query(CREATE_COACH, [
     first_name,
     last_name,
