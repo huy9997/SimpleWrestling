@@ -1,3 +1,3 @@
 module.exports = {
-  LoginSignup: require("./loginSignUp")
+  signUp: require("./signUp")
 };
