@@ -1,6 +1,6 @@
 const connect = require("../connection");
 
-const wrestlerSignup = (
+const userSignup = (
   first_name,
   last_name,
   email,
@@ -10,7 +10,7 @@ const wrestlerSignup = (
   hometown,
   weightClass
 ) => {
-  const CREATE_WRESTLER = `INSERT INTO admin (first_name, last_name, email,password,dob,team,hometown,weightclass) VALUES ($1, $2, $3,$4,$5,$6,$7,$8) RETURNING admin_name`;
+  const CREATE_USER = `INSERT INTO users (first_name, last_name, email,password,dob,team,hometown,weightclass,usertype) VALUES ($1, $2, $3,$4,$5,$6,$7,$8,$9)`;
   return connect.query(CREATE_WRESTLER, [
     first_name,
     last_name,
@@ -19,7 +19,8 @@ const wrestlerSignup = (
     dob,
     team,
     hometown,
-    weightClass
+    weightClass,
+    usertype
   ]);
 };
 
