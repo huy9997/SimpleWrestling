@@ -1,9 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const db = require("../db/signUp");
+const signup = require("../db/signUp/");
 
 router.post("/", (req, res) => {
-  const { userType } = req.body;
   const {
     first_name,
     last_name,
@@ -12,8 +11,10 @@ router.post("/", (req, res) => {
     dob,
     team,
     hometown,
-    weightclass
+    weightclass,
+    typeOfAccount
   } = req.body;
+
   values = [
     first_name,
     last_name,
@@ -22,19 +23,21 @@ router.post("/", (req, res) => {
     dob,
     team,
     hometown,
-    weightclass
+    weightclass,
+    typeOfAccount
   ];
+
+  console.log(values);
+  signup
+    .User(values)
+    .then(query => {
+      console.log(query);
+      res.json(query);
+    })
+    .catch(err => {
+      console.log(err);
+      res.json(err);
+    });
 });
-switch (userType) {
-  case "admin":
-    db.AdminSignup(values);
-    break;
-  case "coach":
-    db.CoachSignup(values);
-    break;
-  default:
-    db.WrestlerSignup(values);
-    break;
-}
 
 module.exports = router;
