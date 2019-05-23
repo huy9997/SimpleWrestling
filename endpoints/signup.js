@@ -10,7 +10,7 @@ router.post("/", (req, res) => {
     password,
     dob,
     team,
-    hometown,
+    address,
     weightclass,
     typeOfAccount
   } = req.body;
@@ -22,7 +22,7 @@ router.post("/", (req, res) => {
     password,
     dob,
     team,
-    hometown,
+    address,
     weightclass,
     typeOfAccount
   ];
