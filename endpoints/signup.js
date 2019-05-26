@@ -20,11 +20,11 @@ router.post("/", (req, res) => {
     last_name,
     email,
     password,
-    dob,
+    date_of_birth,
     team,
     address,
-    weightclass,
-    typeOfAccount
+    weight_class,
+    type_of_Account
   ];
 
   console.log(values);
