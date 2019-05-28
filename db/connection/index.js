@@ -1,4 +1,3 @@
-const Pool = require("pg").Pool;
 const pgp = require("pg-promise")();
 
 const connection = {

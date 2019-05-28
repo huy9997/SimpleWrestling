@@ -31,7 +31,7 @@ router.post("/", (req, res) => {
   signup
     .User(values)
     .then(query => {
-      console.log(query);
+      console.log("success");
       res.json(query, "sucess");
     })
     .catch(err => {
