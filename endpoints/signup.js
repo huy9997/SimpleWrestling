@@ -8,11 +8,11 @@ router.post("/", (req, res) => {
     last_name,
     email,
     password,
-    dob,
+    date_of_birth,
     team,
     address,
-    weightclass,
-    typeOfAccount
+    weight_class,
+    type_of_Account
   } = req.body;
 
   values = [
@@ -32,7 +32,7 @@ router.post("/", (req, res) => {
     .User(values)
     .then(query => {
       console.log(query);
-      res.json(query);
+      res.json(query, "sucess");
     })
     .catch(err => {
       console.log(err);

@@ -1,11 +1,13 @@
 const Pool = require("pg").Pool;
 const pgp = require("pg-promise")();
 
-const pool = new Pool({
+const connection = {
   host: process.env.DB_DEV_HOST,
-  user: process.env.DB_DEV_USER,
+  port: process.env.DB_DEV_PORT,
   database: process.env.DB_DEV_DATABASE,
+  user: process.env.DB_DEV_USER,
   password: process.env.DB_DEV_PASSWORD
-});
-const connection = pgp(pool);
-module.exports = connection;
+};
+
+const db = pgp(connection);
+module.exports = db;
