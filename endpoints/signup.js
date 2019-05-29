@@ -12,7 +12,7 @@ router.post("/", (req, res) => {
     team,
     address,
     weight_class,
-    type_of_Account
+    type_of_account
   } = req.body;
 
   values = [
@@ -24,15 +24,15 @@ router.post("/", (req, res) => {
     team,
     address,
     weight_class,
-    type_of_Account
+    type_of_account
   ];
 
-  console.log(values);
+  // console.log(values);
   signup
     .User(values)
     .then(query => {
       console.log("success");
-      res.json(query, "sucess");
+      res.json(query);
     })
     .catch(err => {
       console.log(err);
