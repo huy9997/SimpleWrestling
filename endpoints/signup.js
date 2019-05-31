@@ -38,11 +38,9 @@ router.post("/", (req, res) => {
         signup
           .User(values)
           .then(insertResult => {
-            console.log(insertResult);
-            res.json("sucess");
+            res.json(values[0], "has logged in");
           })
           .catch(err => {
-            console.log(err);
             res.json("Error has occured in signing up!");
           });
       });
