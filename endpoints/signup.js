@@ -30,19 +30,26 @@ router.post("/", (req, res) => {
     type_of_account
   ];
   console.log(values);
-  search.SearchEmail([values[2]]).then(searchResult => {
-    console.log(searchResult);
-  });
-  // signup
-  //   .User(values)
-  //   .then(query => {
-  //     console.log(query);
-  //     res.json("sucess");
-  //   })
-  //   .catch(err => {
-  //     console.log(err);
-  //     res.json(err);
-  //   });
+  search
+    .SearchEmail([values[2]])
+    .then(searchResult => {
+      bcrypt.hash(values[3], 10, (err, hash) => {
+        values[3] = hash;
+        signup
+          .User(values)
+          .then(insertResult => {
+            console.log(insertResult);
+            res.json("sucess");
+          })
+          .catch(err => {
+            console.log(err);
+            res.json("Error has occured in signing up!");
+          });
+      });
+    })
+    .catch(err => {
+      res.json("Email has already been used!");
+    });
 });
 
 module.exports = router;
