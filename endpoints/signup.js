@@ -29,7 +29,6 @@ router.post("/", (req, res) => {
     weight_class,
     type_of_account
   ];
-  console.log(values);
   search
     .SearchEmail([values[2]])
     .then(searchResult => {
@@ -38,10 +37,10 @@ router.post("/", (req, res) => {
         signup
           .User(values)
           .then(insertResult => {
-            res.json(values[0], "has logged in");
+            res.json("You have logged in");
           })
           .catch(err => {
-            res.json("Error has occured in signing up!");
+            res.status(status).json("error in login");
           });
       });
     })
