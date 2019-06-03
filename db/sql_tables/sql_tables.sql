@@ -1,4 +1,4 @@
-CREATE TABLE "users"
+CREATE TABLE "Users"
 (
   "id" SERIAL PRIMARY KEY,
   "first_name" VARCHAR NOT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE "UserWrestler"
   "weight_class" INTEGER,
   "wins"INTEGER,
   "losses" INTEGER,
-  "user_account" VARCHAR references Users(type_of_account)
+  "user_account" VARCHAR REFERENCES Users(type_of_account)
 );
 
 CREATE TABLE "Tournament"
@@ -28,13 +28,13 @@ CREATE TABLE "Tournament"
   "name" VARCHAR,
   "location" VARCHAR,
   "description" VARCHAR,
-  "tournament_start_date" DATE,
-  "tournament_end_date" DATE,
+  "tournament_start_date" DATETIME,
+  "tournament_end_date" DATETIME,
   "wrestling_style" VARCHAR,
   "wrestling_level" VARCHAR,
   "tournament_flier" VARCHAR,
   "tournament_logo" VARCHAR,
-  "admin_account" VARCHAR REFERENCES Users(type_of_account),
+  "admin_account" VARCHAR REFERENCES Users(type_of_account)
 );
 
 CREATE TABLE "UserSignUpTournament"
@@ -46,7 +46,7 @@ CREATE TABLE "UserSignUpTournament"
   "user_approved" BOOLEAN,
   "user_id" INTEGER REFERENCES UsersWrestler(id),
   "tournament_id" INTEGER REFERENCES Tournament(id)
-)
+);
 CREATE TABLE "BracketMatches"
 (
   "id" SERIAL PRIMARY KEY,
