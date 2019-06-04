@@ -3,21 +3,27 @@ const bcrypt = require("bcrypt");
 const search = require("../db/search");
 
 module.exports = function(passport) {
+  passport.serializeUser(function(user, done) {
+    done(null, user);
+  });
+
+  passport.deserializeUser(function(user, done) {
+    done(null, user);
+  });
   passport.use(
     "local",
     new LocalStrategy(
       { usernameField: "email" },
       (email, password, callback) => {
-        console.log(email, "email");
         search
           .SearchEmail(email)
           .then(user => {
-            console.log(user, "user in passport");
             if (!user)
               return callback(null, false, { message: "Incorrect email" });
-            if (!bcrypt.compareSync(password, user.password)) {
+            if (!bcrypt.compareSync(password, user[0].password)) {
               return callback(null, false, { messasge: "Incorrect password" });
             }
+            console.log("you have logged in ");
             return callback(null, user);
           })
           .catch(err => {
@@ -27,11 +33,4 @@ module.exports = function(passport) {
       }
     )
   );
-  passport.serializeUser((user, callback) => callback(null, user.id));
-
-  passport.deserializeUser((id, callback) => {
-    db.one(`SELECT * FROM users WHERE id = ${id}`)
-      .then(user => callback(null, user))
-      .catch(err => callback(err));
-  });
 };

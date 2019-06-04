@@ -8,6 +8,7 @@ const tournaments = require("./tournaments");
 
 let loggedin = function(req, res, next) {
   if (req.isAuthenticated()) {
+    //db call here
     console.log("you are logging in");
     next();
   } else {
