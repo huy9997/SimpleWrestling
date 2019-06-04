@@ -1,10 +1,13 @@
 let express = require("express");
 let router = express.Router();
 let passport = require("passport");
+
 router.post("/", (req, res, next) => {
-  passport.authenticate("local", function(req, res) {
-    console.log(res, "request");
-    console.log(req, "response");
+  console.log;
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/login",
+    failureFlash: true
   })(req, res, next);
 });
 
