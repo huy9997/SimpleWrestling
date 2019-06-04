@@ -60,7 +60,7 @@ CREATE TABLE BracketMatches
   "tournament_id" INTEGER REFERENCES Tournament(id)
 );
 
-CREATE TABLE BracketResults
+CREATE TABLE BracketMatchResults
 (
   "id" SERIAL PRIMARY KEY,
   "wrestler1_score" INTEGER,
