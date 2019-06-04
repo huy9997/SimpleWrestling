@@ -6,7 +6,7 @@ const auth = require("./auth");
 const createTournaments = require("./createTournaments");
 
 let loggedin = function(req, res, next) {
-  console.log(req.isAuthenticated);
+  console.log(req.isAuthenticated, "this is auth ");
   if (req.isAuthenticated()) {
     //db call here
     next();
