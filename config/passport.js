@@ -23,7 +23,6 @@ module.exports = function(passport) {
             if (!bcrypt.compareSync(password, user[0].password)) {
               return callback(null, false, { messasge: "Incorrect password" });
             }
-            console.log("you have logged in ");
             return callback(null, user);
           })
           .catch(err => {
