@@ -10,7 +10,7 @@ Node.js
 Express
 
 Database:
-TBD
+Postgres
 
 How to install the dependencies:
 
@@ -27,7 +27,7 @@ DB_DEV_DATABASE=
 DB_DEV_PASSWORD=
 `
 
-How to run the project:
+How to run the development project:
 
 Run Frontend
 
