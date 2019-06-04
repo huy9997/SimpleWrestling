@@ -11,27 +11,22 @@ passport.deserializeUser((id, callback) => {
     .catch(err => callback(err));
 });
 passport.use(
-  "local-login",
-  new LocalStrategy(
-    {
-      usernameField: "email"
-    },
-    (email, password, callback) => {
-      search
-        .SearchEmail(email)
-        .then(user => {
-          if (!user)
-            return callback(null, false, { message: "Incorrect email" });
-          if (!bcrypt.compareSync(password, user.password)) {
-            return callback(null, false, { messasge: "Incorrect password" });
-          }
-          return callback(null, user);
-        })
-        .catch(err => {
-          callback("their was a an error login please try again");
-        });
-    }
-  )
+  "local",
+  new LocalStrategy((email, password, callback) => {
+    search
+      .SearchEmail(email)
+      .then(user => {
+        console.log(user, "user in passport");
+        if (!user) return callback(null, false, { message: "Incorrect email" });
+        if (!bcrypt.compareSync(password, user.password)) {
+          return callback(null, false, { messasge: "Incorrect password" });
+        }
+        return callback(null, user);
+      })
+      .catch(err => {
+        callback("their was a an error login please try again");
+      });
+  })
 );
 
 module.exports = passport;

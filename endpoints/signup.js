@@ -41,7 +41,7 @@ router.post("/", (req, res) => {
         signup
           .User(values)
           .then(insertResult => {
-            res.json("You have signed in in");
+            res.json("You have signed up");
           })
           .catch(err => {
             res.status(status).json("error in login");
