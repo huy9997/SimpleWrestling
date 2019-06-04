@@ -6,6 +6,7 @@ const search = require("../db/search");
 const bcrypt = require("bcrypt");
 
 router.post("/", (req, res) => {
+  let active;
   const {
     first_name,
     last_name,
@@ -17,7 +18,9 @@ router.post("/", (req, res) => {
     weight_class,
     type_of_account
   } = req.body;
-
+  if (email != "" && password != "") {
+    active = true;
+  }
   values = [
     first_name,
     last_name,
@@ -27,7 +30,8 @@ router.post("/", (req, res) => {
     team,
     address,
     weight_class,
-    type_of_account
+    type_of_account,
+    active
   ];
   search
     .SearchEmail([values[2]])
@@ -37,7 +41,7 @@ router.post("/", (req, res) => {
         signup
           .User(values)
           .then(insertResult => {
-            res.json("You have logged in");
+            res.json("You have signed in in");
           })
           .catch(err => {
             res.status(status).json("error in login");
