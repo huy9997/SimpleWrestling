@@ -1,7 +1,7 @@
 const db = require("../connection");
 
 const createTournament = value => {
-  const SEARCH_FOR_USER = `INSERT INTO tournament (
+  const CREATE_TOURNAMENT = `INSERT INTO tournament (
     name,
     location,
     description,
@@ -15,7 +15,7 @@ const createTournament = value => {
     admin_account,
     ) 
     VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)`;
-  return db.query(SEARCH_FOR_USER, value);
+  return db.query(CREATE_TOURNAMENT, value);
 };
 
 module.exports = createTournament;
