@@ -3,7 +3,7 @@ const router = express.Router();
 
 const signup = require("./signup");
 const auth = require("./auth");
-const tournament = require("./tournament");
+const createTournament = require("./createTournament");
 
 let isAdmin = (req, res, next) => {
   if (req.isAuthenticated() && req.user[0].type_of_account == "admin") {
@@ -22,6 +22,6 @@ let isWrestler = (req, res, next) => {
 
 router.use("/signup", signup);
 router.use("/auth", auth);
-router.use("/tournament", isAdmin, tournament);
+router.use("/createTournament", isAdmin, createTournament);
 
 module.exports = router;
