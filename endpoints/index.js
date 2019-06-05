@@ -5,18 +5,23 @@ const signup = require("./signup");
 const auth = require("./auth");
 const createTournaments = require("./createTournaments");
 
-let loggedin = function(req, res, next) {
-  if (req.isAuthenticated()) {
-    //db call here
+let isAdmin = (req, res, next) => {
+  if (req.isAuthenticated() && req.user[0].type_of_account == "admin") {
     next();
   } else {
-    console.log("redirecting to the page");
+    res.redirect("/login");
+  }
+};
+let isWrestler = (req, res, next) => {
+  if (req.isAuthenticated() && req.user[0].type_of_account == "wrestler") {
+    next();
+  } else {
     res.redirect("/login");
   }
 };
 
 router.use("/signup", signup);
 router.use("/auth", auth);
-router.use("/createTournaments", loggedin, createTournaments);
+router.use("/createTournaments", isAdmin, createTournaments);
 
 module.exports = router;
