@@ -39,7 +39,7 @@ router.post("/", (req, res) => {
       bcrypt.hash(values[3], 10, (err, hash) => {
         values[3] = hash;
         signup
-          .User(values)
+          .CreateUser(values)
           .then(insertResult => {
             res.json("You have signed up");
           })
