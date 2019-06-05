@@ -38,4 +38,6 @@ app.use(function(req, res, next) {
 
 app.use("/api", endpoints);
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () =>
+  console.log(`SimpleWrestling is listening on port ${port}!`)
+);
