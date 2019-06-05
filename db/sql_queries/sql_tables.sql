@@ -9,7 +9,6 @@ CREATE TABLE Users
   "team" VARCHAR,
   "address" VARCHAR,
   "type_of_account" VARCHAR,
-  "active" BOOLEAN
 );
 
 CREATE TABLE UserWrestler
@@ -18,6 +17,35 @@ CREATE TABLE UserWrestler
   "weight_class" INTEGER,
   "wins" INTEGER,
   "losses" INTEGER,
+  "user_account" INTEGER REFERENCES Users(id)
+);
+
+CREATE TABLE UserAdmin
+(
+  "id" SERIAL PRIMARY KEY,
+  "first_name" VARCHAR NOT NULL,
+  "last_name" VARCHAR,
+  "email" VARCHAR UNIQUE,
+  "password" VARCHAR,
+  "date_of_birth" DATE,
+  "address" VARCHAR,
+  "type_of_account" VARCHAR,
+);
+
+CREATE TABLE UserWrestler
+(
+  "id" SERIAL PRIMARY KEY,
+  "first_name" VARCHAR NOT NULL,
+  "last_name" VARCHAR,
+  "email" VARCHAR UNIQUE,
+  "password" VARCHAR,
+  "date_of_birth" DATE,
+  "team" VARCHAR,
+  "address" VARCHAR,
+  "weight_class" INTEGER,
+  "wins" INTEGER,
+  "losses" INTEGER,
+  "active" BOOLEAN,
   "user_account" INTEGER REFERENCES Users(id)
 );
 
