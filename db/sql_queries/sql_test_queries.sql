@@ -1,8 +1,8 @@
 
 
 INSERT INTO  users
-  ("first_name","last_name","email","password","date_of_birth","team","address","weight_class","type_of_account","active")
-VALUES('Jimmy', 'Smith', 'email1@email.com', 'password', '2/2/2', 'wildcats', '1533 14th Street SF, CA', 125, 'wrestler', true)
+  ("first_name","last_name","email","password","date_of_birth","team","address","type_of_account","active")
+VALUES('Jimmy', 'Smith', 'email1@email.com', 'password', '2/2/2', 'wildcats', '1533 14th Street SF, CA', 'wrestler', true)
 
 INSERT INTO userwrestler
   ("user_account","weight_class","wins","losses")

@@ -15,8 +15,11 @@ router.post("/", (req, res) => {
     date_of_birth,
     team,
     address,
+    type_of_account,
     weight_class,
-    type_of_account
+    wins,
+    losses,
+    user_account
   } = req.body;
   if (email != "" && password != "") {
     active = true;
@@ -29,10 +32,10 @@ router.post("/", (req, res) => {
     date_of_birth,
     team,
     address,
-    weight_class,
     type_of_account,
     active
   ];
+  valuesWrestler = [weight_class, wins, losses, user_account];
   search
     .SearchEmail([values[2]])
     .then(searchResult => {
@@ -40,11 +43,24 @@ router.post("/", (req, res) => {
         values[3] = hash;
         signup
           .CreateUser(values)
-          .then(insertResult => {
-            res.json("You have signed up");
+          .then(createUserResult => {
+            if (values[7] == "wrestler") {
+              valuesWrestler[3] = createUserResult[0].id;
+              signup
+                .CreateWrestler(valuesWrestler)
+                .then(createWrestlerUserResult => {
+                  res.json("You have signed up as a wrestler");
+                })
+                .catch(err => {
+                  res.json("error in creating a wrestler");
+                });
+            }
+            if (values[7] == "admin") {
+              res.json("You have signed up as a admin");
+            }
           })
           .catch(err => {
-            res.status(status).json("error in login");
+            res.status(status).json("error in creating a user");
           });
       });
     })

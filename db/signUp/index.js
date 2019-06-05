@@ -1,3 +1,4 @@
 module.exports = {
-  CreateUser: require("./createUser")
+  CreateUser: require("./createUser"),
+  CreateWrestler: require("./createWrestler")
 };
