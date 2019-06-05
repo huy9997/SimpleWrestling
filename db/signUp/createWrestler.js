@@ -1,6 +1,6 @@
 const connect = require("../connection");
 
-const createUser = values => {
+const userSignup = values => {
   const CREATE_USER = `INSERT INTO users (
     first_name,
     last_name,
@@ -15,4 +15,4 @@ const createUser = values => {
   return connect.query(CREATE_USER, values);
 };
 
-module.exports = createUser;
+module.exports = userSignup;

@@ -8,7 +8,6 @@ CREATE TABLE Users
   "date_of_birth" DATE,
   "team" VARCHAR,
   "address" VARCHAR,
-  "weight_class" INTEGER,
   "type_of_account" VARCHAR,
   "active" BOOLEAN
 );
