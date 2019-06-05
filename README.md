@@ -16,7 +16,7 @@ How to install the dependencies:
 
 install npm modules in client: 1. cd into client 2. npm install
 install npm modules for the node server: 1. npm install
-How to setup .env folder:
+3.How to setup .env folder:
 create a .env folder with the following content with your postgres credentials
 `
 NODE_ENV=development
@@ -36,4 +36,9 @@ Run Frontend
 
 Run Backend
 
-2. run "node index.js"
+1. create sql tables to test postgres locally
+
+- cd db/sql_queries/sql_tables.sql
+- run those sql queries to have working tables
+
+2. run "node index.js" in the root of the project

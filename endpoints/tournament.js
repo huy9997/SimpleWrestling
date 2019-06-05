@@ -7,7 +7,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/createTournament", (req, res) => {
-  let active;
+  let active = true;
   let admin_account = req.user[0].id;
   const {
     name,
@@ -36,12 +36,11 @@ router.post("/createTournament", (req, res) => {
   tournament
     .CreateTournament(values)
     .then(createTournamentResults => {
-      res.json("You have successfully created a tournament");
+      res.json("you have created a tournament");
     })
     .catch(err => {
-      console.log(err);
       res.json(
-        "their has been an error in creating a tournament please try again"
+        "their was been an error in creating a tournament please try again"
       );
     });
 });
