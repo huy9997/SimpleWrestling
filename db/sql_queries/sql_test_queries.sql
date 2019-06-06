@@ -28,5 +28,16 @@ SELECT userwrestler.id
 FROM userwrestler
   INNER JOIN users ON
   users.id = userwrestler.user_account
-WHERE users.id =12 
+WHERE users.id =12
 ;
+
+
+/* sign up for tournament*/
+
+INSERT INTO usersignuptournament
+  (
+  seeding_notes,
+  userWrestler_id,
+  tournament_id
+  )
+VALUES('seeding notes', 3, 1);

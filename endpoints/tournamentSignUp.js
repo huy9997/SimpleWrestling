@@ -12,6 +12,7 @@ router.post("/", (req, res) => {
       res.json("you have signed up for a tournament successfully");
     })
     .catch(err => {
+      console.log(err);
       res.json(
         "there was a error in signing up for a tournament please try again"
       );
