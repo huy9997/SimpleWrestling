@@ -10,7 +10,7 @@ const createAdmin = values => {
     address,
     type_of_account,
     active
-    ) VALUES ($1,$2,$3,$4,$5,$6,$7)`;
+    ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)`;
   return connect.query(CREATE_ADMIN, values);
 };
 

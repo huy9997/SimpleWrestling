@@ -16,7 +16,6 @@ router.post("/", (req, res) => {
     date_of_birth,
     address
   } = req.body;
-
   if (type_of_account == "admin") {
     const values = [
       first_name,
@@ -29,16 +28,18 @@ router.post("/", (req, res) => {
       active
     ];
     search
-      .SearchEmail([values[2]])
+      .SearchAdminEmail([values[2]])
       .then(searchResult => {
         bcrypt.hash(values[3], 10, (err, hash) => {
           values[3] = hash;
+          console.log(values, "values");
           signup
             .CreateAdmin(values)
             .then(createAdminResult => {
               res.json("You have successfully make a Admin Account");
             })
             .catch(err => {
+              console.log(err);
               res.json("Error in creating admin account please try agains");
             });
         });
@@ -64,7 +65,7 @@ router.post("/", (req, res) => {
       active
     ];
     search
-      .SearchEmail([values[2]])
+      .SearchWrestlerEmail([values[2]])
       .then(searchResult => {
         bcrypt.hash(values[3], 10, (err, hash) => {
           values[3] = hash;
@@ -74,7 +75,7 @@ router.post("/", (req, res) => {
               res.json("You have successfully make a wrestler Account");
             })
             .catch(err => {
-              res.json("Error in creating wrestler account please try agains");
+              res.json("Error in creating wrestler account please try again");
             });
         });
       })
