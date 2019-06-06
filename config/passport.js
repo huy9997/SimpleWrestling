@@ -16,13 +16,32 @@ module.exports = function(passport) {
       { usernameField: "email" },
       (email, password, callback) => {
         search
-          .SearchEmail(email)
+          .SearchAdminEmail([email])
           .then(user => {
-            if (!user)
+            userFlag = user;
+            if (user[0].email != email)
               return callback(null, false, { message: "Incorrect email" });
             if (!bcrypt.compareSync(password, user[0].password)) {
               return callback(null, false, { messasge: "Incorrect password" });
             }
+            return callback(null, user);
+          })
+          .catch(err => {
+            console.log(err);
+            callback("their was a an error login please try again");
+          });
+        search
+          .SearchWrestlerEmail([email])
+          .then(user => {
+            userFlag = user;
+            if (user[0].email != email)
+              return callback(null, false, { message: "Incorrect email" });
+            if (!bcrypt.compareSync(password, user[0].password)) {
+              return callback(null, false, {
+                messasge: "Incorrect password"
+              });
+            }
+            userFlag = false;
             return callback(null, user);
           })
           .catch(err => {
