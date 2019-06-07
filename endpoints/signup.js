@@ -6,67 +6,83 @@ const search = require("../db/search");
 const bcrypt = require("bcrypt");
 
 router.post("/", (req, res) => {
-  let active;
+  let active = true;
   const {
+    type_of_account,
     first_name,
     last_name,
     email,
     password,
     date_of_birth,
-    team,
-    address,
-    type_of_account,
-    weight_class,
-    wins,
-    losses,
-    user_account
+    address
   } = req.body;
-  if (email != "" && password != "") {
-    active = true;
-  }
-  values = [
-    first_name,
-    last_name,
-    email,
-    password,
-    date_of_birth,
-    team,
-    address,
-    type_of_account,
-    active
-  ];
-  valuesWrestler = [weight_class, wins, losses, user_account];
-  search
-    .SearchEmail([values[2]])
-    .then(searchResult => {
-      bcrypt.hash(values[3], 10, (err, hash) => {
-        values[3] = hash;
-        signup
-          .CreateUser(values)
-          .then(createUserResult => {
-            if (values[7] == "wrestler") {
-              valuesWrestler[3] = createUserResult[0].id;
-              signup
-                .CreateWrestler(valuesWrestler)
-                .then(createWrestlerUserResult => {
-                  res.json("You have signed up as a wrestler");
-                })
-                .catch(err => {
-                  res.json("error in creating a wrestler");
-                });
-            }
-            if (values[7] == "admin") {
-              res.json("You have signed up as a admin");
-            }
-          })
-          .catch(err => {
-            res.status(status).json("error in creating a user");
-          });
+  if (type_of_account == "admin") {
+    const values = [
+      first_name,
+      last_name,
+      email,
+      password,
+      date_of_birth,
+      address,
+      type_of_account,
+      active
+    ];
+    search
+      .SearchAdminEmail([values[2]])
+      .then(searchResult => {
+        bcrypt.hash(values[3], 10, (err, hash) => {
+          values[3] = hash;
+          console.log(values, "values");
+          signup
+            .CreateAdmin(values)
+            .then(createAdminResult => {
+              res.json("You have successfully make a Admin Account");
+            })
+            .catch(err => {
+              console.log(err);
+              res.json("Error in creating admin account please try agains");
+            });
+        });
+      })
+      .catch(err => {
+        res.json("Email has already been used!");
       });
-    })
-    .catch(err => {
-      res.json("Email has already been used!");
-    });
+  }
+  if (type_of_account == "wrestler") {
+    const { team, weight_class, wins, losses } = req.body;
+    const values = [
+      first_name,
+      last_name,
+      email,
+      password,
+      date_of_birth,
+      address,
+      team,
+      weight_class,
+      wins,
+      losses,
+      type_of_account,
+      active
+    ];
+    search
+      .SearchWrestlerEmail([values[2]])
+      .then(searchResult => {
+        bcrypt.hash(values[3], 10, (err, hash) => {
+          values[3] = hash;
+          signup
+            .CreateWrestler(values)
+            .then(createAdminResult => {
+              res.json("You have successfully make a wrestler Account");
+            })
+            .catch(err => {
+              res.json("Error in creating wrestler account please try again");
+            });
+        });
+      })
+      .catch(err => {
+        res.json("Email has already been used!");
+      });
+  }
 });
 
 module.exports = router;

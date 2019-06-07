@@ -16,9 +16,9 @@ module.exports = function(passport) {
       { usernameField: "email" },
       (email, password, callback) => {
         search
-          .SearchEmail(email)
+          .SearchUniqueEmail([email])
           .then(user => {
-            if (!user)
+            if (user[0].email != email)
               return callback(null, false, { message: "Incorrect email" });
             if (!bcrypt.compareSync(password, user[0].password)) {
               return callback(null, false, { messasge: "Incorrect password" });
@@ -26,7 +26,6 @@ module.exports = function(passport) {
             return callback(null, user);
           })
           .catch(err => {
-            console.log(err);
             callback("their was a an error login please try again");
           });
       }

@@ -1,3 +1,4 @@
 module.exports = {
-  CreateTournament: require("./createTournament")
+  CreateTournament: require("./createTournament"),
+  SignUpForTournament: require("./tournamentSignUp")
 };
