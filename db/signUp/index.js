@@ -1,4 +1,4 @@
 module.exports = {
-  CreateUser: require("./createUser"),
+  CreateAdmin: require("./createAdmin"),
   CreateWrestler: require("./createWrestler")
 };

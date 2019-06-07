@@ -6,7 +6,7 @@ router.get("/", (req, res) => {
   res.json("secure page");
 });
 
-router.post("/createTournament", (req, res) => {
+router.post("/", (req, res) => {
   let active = true;
   let admin_account = req.user[0].id;
   const {
