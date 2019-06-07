@@ -34,14 +34,12 @@ router.post("/", (req, res) => {
       .then(searchResult => {
         bcrypt.hash(values[3], 10, (err, hash) => {
           values[3] = hash;
-          console.log(values, "values");
           signup
             .CreateAdmin(values)
             .then(createAdminResult => {
               res.json("You have successfully make a Admin Account");
             })
             .catch(err => {
-              console.log(err);
               res.json("Error in creating admin account please try agains");
             });
         });

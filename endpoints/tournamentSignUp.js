@@ -4,8 +4,13 @@ const tournament = require("../db/tournament");
 const search = require("../db/search");
 
 router.post("/", (req, res) => {
-  const { seeding_notes, tournament_id } = req.body;
-  values = [seeding_notes, req.user[0].id, tournament_id];
+  const { seeding_notes, tournament_id, tournament_weight_class } = req.body;
+  values = [
+    seeding_notes,
+    tournament_weight_class,
+    req.user[0].id,
+    tournament_id
+  ];
   tournament
     .SignUpForTournament(values)
     .then(signUpResults => {

@@ -50,7 +50,7 @@ CREATE TABLE UserSignUpTournament
   "id" SERIAL PRIMARY KEY,
   "seeding_notes" VARCHAR,
   "tournament_weight_class" INTEGER,
-  "userWrestler_id" INTEGER REFERENCES UserWrestler(id),
+  "user_wrestler_id" INTEGER REFERENCES UserWrestler(id),
   "tournament_id" INTEGER REFERENCES Tournament(id)
 );
 
