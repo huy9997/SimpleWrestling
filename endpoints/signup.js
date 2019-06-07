@@ -14,8 +14,10 @@ router.post("/", (req, res) => {
     email,
     password,
     date_of_birth,
-    address
+    address,
+    grade
   } = req.body;
+
   if (type_of_account == "admin") {
     const values = [
       first_name,
@@ -61,6 +63,7 @@ router.post("/", (req, res) => {
       weight_class,
       wins,
       losses,
+      grade,
       type_of_account,
       active
     ];

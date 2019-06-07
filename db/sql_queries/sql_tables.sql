@@ -24,6 +24,7 @@ CREATE TABLE UserWrestler
   "weight_class" INTEGER,
   "wins" INTEGER,
   "losses" INTEGER,
+  "grade" VARCHAR,
   "type_of_account" VARCHAR,
   "active" BOOLEAN
 );
@@ -48,15 +49,24 @@ CREATE TABLE UserSignUpTournament
 (
   "id" SERIAL PRIMARY KEY,
   "seeding_notes" VARCHAR,
+  "tournament_weight_class" INTEGER,
   "userWrestler_id" INTEGER REFERENCES UserWrestler(id),
   "tournament_id" INTEGER REFERENCES Tournament(id)
 );
+
+CREATE TABLE WeightClasses
+(
+  "id" SERIAL PRIMARY KEY,
+  "weight_class" INTEGER,
+  "tournament_id" INTEGER REFERENCES Tournament(id)
+);
+
 CREATE TABLE BracketMatches
 (
   "id" SERIAL PRIMARY KEY,
   "wrestler1_id" INTEGER,
   "wrestler2_id" INTEGER,
-  "tournament_id" INTEGER REFERENCES Tournament(id)
+  "weight_class_id" INTEGER REFERENCES WeightClasses(id)
 );
 
 CREATE TABLE BracketMatchResults
@@ -64,5 +74,5 @@ CREATE TABLE BracketMatchResults
   "id" SERIAL PRIMARY KEY,
   "wrestler1_score" INTEGER,
   "wrestler2_score" INTEGER,
-  "bout_number" INTEGER REFERENCES BracketMatches(id)
+  "bracket_match_id" INTEGER REFERENCES BracketMatches(id)
 );
