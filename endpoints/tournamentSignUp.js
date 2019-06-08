@@ -5,6 +5,7 @@ const search = require("../db/search");
 
 router.post("/", (req, res) => {
   const { seeding_notes, tournament_id, tournament_weight_class } = req.body;
+  const userId = req.user.id;
   values = [
     seeding_notes,
     tournament_weight_class,

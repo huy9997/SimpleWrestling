@@ -66,7 +66,7 @@ CREATE TABLE BracketMatches
   "id" SERIAL PRIMARY KEY,
   "wrestler1_id" INTEGER,
   "wrestler2_id" INTEGER,
-  "weight_class_id" INTEGER REFERENCES WeightClasses(id)
+  "tournament_id" INTEGER REFERENCES WeightClasses(id)
 );
 
 CREATE TABLE BracketMatchResults
