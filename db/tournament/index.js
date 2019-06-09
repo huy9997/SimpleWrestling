@@ -1,7 +1,7 @@
 module.exports = {
   CreateTournament: require("./createTournament"),
   SignUpForTournament: require("./tournamentSignUp"),
-  GetAllWrestlersSignedUp: require("./getAllWrestlersSignedUp"),
+  getWeightClassBouts: require("./getWeightClassBouts"),
   InsertWeightClass: require("./insertWeightClasses"),
   InsertBracketMatches: require("./insertBracketMatches")
 };
