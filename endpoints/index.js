@@ -8,6 +8,7 @@ const tournamentSignUp = require("./tournamentSignUp");
 const tournamentBrackets = require("./tournamentBrackets");
 const tournamentWeightClasses = require("./tournamentWeightClasses");
 const tournamentCreateBrackets = require("./tournamentCreateBrackets");
+const tournamentMatchResults = require("./tournamentMatchResults");
 
 let isAdmin = (req, res, next) => {
   if (req.isAuthenticated() && req.user[0].type_of_account == "admin") {
@@ -31,5 +32,6 @@ router.use("/tournamentWeightClasses", isAdmin, tournamentWeightClasses);
 router.use("/tournamentCreateBrackets", isAdmin, tournamentCreateBrackets);
 router.use("/tournamentSignUp", isWrestler, tournamentSignUp);
 router.use("/tournamentBrackets", tournamentBrackets);
+router.use("/tournamentMatchResults", tournamentMatchResults);
 
 module.exports = router;
