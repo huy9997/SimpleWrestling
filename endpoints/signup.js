@@ -14,8 +14,10 @@ router.post("/", (req, res) => {
     email,
     password,
     date_of_birth,
-    address
+    address,
+    grade
   } = req.body;
+
   if (type_of_account == "admin") {
     const values = [
       first_name,
@@ -32,14 +34,12 @@ router.post("/", (req, res) => {
       .then(searchResult => {
         bcrypt.hash(values[3], 10, (err, hash) => {
           values[3] = hash;
-          console.log(values, "values");
           signup
             .CreateAdmin(values)
             .then(createAdminResult => {
               res.json("You have successfully make a Admin Account");
             })
             .catch(err => {
-              console.log(err);
               res.json("Error in creating admin account please try agains");
             });
         });
@@ -61,6 +61,7 @@ router.post("/", (req, res) => {
       weight_class,
       wins,
       losses,
+      grade,
       type_of_account,
       active
     ];

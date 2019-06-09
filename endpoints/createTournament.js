@@ -2,10 +2,6 @@ let express = require("express");
 let router = express.Router();
 let tournament = require("../db/tournament");
 
-router.get("/", (req, res) => {
-  res.json("secure page");
-});
-
 router.post("/", (req, res) => {
   let active = true;
   let admin_account = req.user[0].id;
