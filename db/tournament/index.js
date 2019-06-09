@@ -3,5 +3,6 @@ module.exports = {
   SignUpForTournament: require("./tournamentSignUp"),
   getWeightClassBouts: require("./getWeightClassBouts"),
   InsertWeightClass: require("./insertWeightClasses"),
-  InsertBracketMatches: require("./insertBracketMatches")
+  InsertBracketMatches: require("./insertBracketMatches"),
+  InsertMatchResults: require("./insertMatchResults")
 };
