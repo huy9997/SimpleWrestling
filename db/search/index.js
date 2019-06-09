@@ -1,5 +1,6 @@
 module.exports = {
-  SearchWrestlerEmail: require("./searchWrestlerEmail"),
+  SearchWrestler: require("./searchWrestler"),
   SearchAdminEmail: require("./searchAdminEmail"),
+  SearchWrestlerEmail: require("./searchWrestlerEmail"),
   SearchUniqueEmail: require("./searchForEmail")
 };
