@@ -7,6 +7,7 @@ router.post("/", (req, res) => {
   for (let i = 0; i < weightClasses.length; i++) {
     const values = [weightClasses[i], tournament_id];
     tournament.InsertWeightClass(values).catch(err => {
+      console.log(err);
       res.json("their was an error in inserting this weight classes try again");
     });
   }
