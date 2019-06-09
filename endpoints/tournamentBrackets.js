@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const tournaments = require("../db/tournament");
-const search = require("../db/search");
-//get data from userSignUpTournament
 
 router.get("/", (req, res) => {
   const { weight_class_id, tournament_id } = req.query;
@@ -10,6 +8,7 @@ router.get("/", (req, res) => {
   tournaments
     .getWeightClassBouts(values)
     .then(boutsResults => {
+      //if needed
       //loops through the objects to break down the wrestler info for each weight class
       res.json(boutsResults);
     })
