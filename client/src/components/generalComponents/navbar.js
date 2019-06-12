@@ -34,10 +34,10 @@ const navbar = () => {
           <Button color="inherit" variant="h6" className={classes.title}>
             Simple Wrestling
           </Button>
-          <Button color="inherit">Login</Button>
           <Button color="inherit" href="/login">
-            Tournament
+            Login
           </Button>
+          <Button color="inherit">Tournament</Button>
         </Toolbar>
       </AppBar>
     </div>
