@@ -35,7 +35,9 @@ const navbar = () => {
             Simple Wrestling
           </Button>
           <Button color="inherit">Login</Button>
-          <Button color="inherit">Tournament</Button>
+          <Button color="inherit" href="/login">
+            Tournament
+          </Button>
         </Toolbar>
       </AppBar>
     </div>
