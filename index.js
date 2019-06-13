@@ -7,16 +7,17 @@ const port = process.env.PORT || 5000;
 const endpoints = require("./endpoints");
 
 const session = require("express-session");
+const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const flash = require("connect-flash");
 
 const passport = require("passport");
+
 require("./config/passport")(passport);
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
