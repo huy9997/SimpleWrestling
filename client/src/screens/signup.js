@@ -33,32 +33,60 @@ class App extends Component {
       password: "",
       date_of_birth: "",
       address: "",
-      //wrestler
       team: "",
       weight_class: "",
       wins: "",
       losses: "",
       grade: "",
-
       type_of_account: ""
     };
   }
   onchange = e => {
-    console.log("test ", this.state.type_of_account, "this is the state");
-    this.setState({ [e.target.name]: e.target.value });
+    console.log("test ", this.state, "this is the state");
+    this.setState({
+      [e.target.name]: e.target.value
+    });
   };
   onSubmit = e => {
-    axios
-      .post("api/signup", {
-        email: this.state.email,
-        password: this.state.password
-      })
-      .then(function(response) {
-        console.log(response, "sucecss");
-      })
-      .catch(function(error) {
-        console.log(error, "error");
-      });
+    if (this.state.type_of_account === "admin") {
+      axios
+        .post("api/signup", {
+          first_name: this.state.first_name,
+          last_name: this.state.last_name,
+          email: this.state.email,
+          password: this.state.password,
+          date_of_birth: this.state.date_of_birth,
+          address: this.state.address,
+          type_of_account: this.state.type_of_account
+        })
+        .then(function(response) {
+          console.log(response, "sucecss");
+        })
+        .catch(function(error) {
+          console.log(error, "error");
+        });
+    }
+    if (this.state.type_of_account === "wrestler") {
+      axios
+        .post("api/signup", {
+          first_name: this.state.first_name,
+          last_name: this.state.last_name,
+          email: this.state.email,
+          password: this.state.password,
+          date_of_birth: this.state.date_of_birth,
+          address: this.state.address,
+          type_of_account: this.state.type_of_account,
+          team: this.state.team,
+          weight_class: this.state.weight_class,
+          grade: this.state.grade
+        })
+        .then(function(response) {
+          console.log(response, "sucecss");
+        })
+        .catch(function(error) {
+          console.log(error, "error");
+        });
+    }
   };
   render() {
     return (
@@ -72,6 +100,7 @@ class App extends Component {
           </Typography>
           <Box mt={3} width={1} noValidate>
             <Grid container spacing={2}>
+              {/* first name */}
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="fname"
@@ -86,6 +115,7 @@ class App extends Component {
                   value={this.state.first_name}
                 />
               </Grid>
+              {/* last name */}
               <Grid item xs={12} sm={6}>
                 <TextField
                   variant="outlined"
@@ -99,6 +129,7 @@ class App extends Component {
                   value={this.state.last_name}
                 />
               </Grid>
+              {/* email */}
               <Grid item xs={12}>
                 <TextField
                   variant="outlined"
@@ -112,6 +143,7 @@ class App extends Component {
                   value={this.state.email}
                 />
               </Grid>
+              {/* password */}
               <Grid item xs={12}>
                 <TextField
                   variant="outlined"
@@ -151,6 +183,7 @@ class App extends Component {
                   value={this.state.address}
                 />
               </Grid>
+              {/* type of account */}
               <Grid item xs={12}>
                 <TextField
                   id="type_of_account"
@@ -168,7 +201,7 @@ class App extends Component {
                   ))}
                 </TextField>
               </Grid>
-
+              {/* team */}
               <Grid item xs={12} />
               <TextField
                 variant="outlined"
@@ -179,6 +212,7 @@ class App extends Component {
                 value={this.state.team}
               />
               <Grid />
+              {/* weight class */}
               <Grid item xs={12} />
               <TextField
                 variant="outlined"
@@ -189,6 +223,7 @@ class App extends Component {
                 value={this.state.weight_class}
               />
               <Grid />
+              {/* grade */}
               <Grid item xs={12} />
               <TextField
                 variant="outlined"
@@ -199,6 +234,7 @@ class App extends Component {
                 value={this.state.grade}
               />
               <Grid />
+              {/* marketing conditions */}
 
               <Grid item xs={12}>
                 <FormControlLabel
@@ -216,6 +252,7 @@ class App extends Component {
               variant="contained"
               color="primary"
               m={3}
+              onClick={this.onSubmit}
             >
               Sign Up
             </Button>
