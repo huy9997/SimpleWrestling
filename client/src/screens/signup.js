@@ -61,9 +61,6 @@ class App extends Component {
       });
   };
   render() {
-    if (this.state.type_of_account == "wrestler") {
-      //conditional for the wrestler input
-    }
     return (
       <Container component="main" maxWidth="xs">
         <Box mt={8} display="flex" flexDirection="column" alignItems="center">
@@ -171,6 +168,37 @@ class App extends Component {
                   ))}
                 </TextField>
               </Grid>
+
+              <Grid item xs={12} />
+              <TextField
+                variant="outlined"
+                fullWidth
+                label="Team"
+                id="team"
+                onChange={e => this.onchange(e)}
+                value={this.state.team}
+              />
+              <Grid />
+              <Grid item xs={12} />
+              <TextField
+                variant="outlined"
+                fullWidth
+                label="Weight Class"
+                id="weight_class"
+                onChange={e => this.onchange(e)}
+                value={this.state.weight_class}
+              />
+              <Grid />
+              <Grid item xs={12} />
+              <TextField
+                variant="outlined"
+                fullWidth
+                label="Grade"
+                id="grade"
+                onChange={e => this.onchange(e)}
+                value={this.state.grade}
+              />
+              <Grid />
 
               <Grid item xs={12}>
                 <FormControlLabel
