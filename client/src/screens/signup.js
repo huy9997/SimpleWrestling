@@ -4,7 +4,6 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
 import Checkbox from "@material-ui/core/Checkbox";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
@@ -45,12 +44,12 @@ class App extends Component {
     };
   }
   onchange = e => {
-    console.log(this.state.type_of_account, "this is the state");
+    console.log("test ", this.state.type_of_account, "this is the state");
     this.setState({ [e.target.name]: e.target.value });
   };
   onSubmit = e => {
     axios
-      .post("api/auth/login", {
+      .post("api/signup", {
         email: this.state.email,
         password: this.state.password
       })
@@ -62,6 +61,9 @@ class App extends Component {
       });
   };
   render() {
+    if (this.state.type_of_account == "wrestler") {
+      //conditional for the wrestler input
+    }
     return (
       <Container component="main" maxWidth="xs">
         <Box mt={8} display="flex" flexDirection="column" alignItems="center">
@@ -154,10 +156,13 @@ class App extends Component {
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  id="type_of_account"
                   select
-                  label="With Select"
-                  onChange={this.onchange}
+                  label="Type of Account"
+                  onChange={e => this.onchange(e)}
                   value={this.state.type_of_account}
+                  helperText="Please select the type of account you would like to create"
+                  margin="normal"
                 >
                   {accountType.map(option => (
                     <MenuItem key={option.value} value={option.value}>
@@ -165,26 +170,8 @@ class App extends Component {
                     </MenuItem>
                   ))}
                 </TextField>
-                {/* <TextField
-                  id="type_of_account"
-                  select
-                  label="Type of Account"
-                  value={this.state.type_of_account}
-                  onChange={this.onchange}
-                  helperText="Please select the type of account you would like to create"
-                  margin="normal"
-                >
-                  {accountType.map(option => (
-                    <MenuItem
-                      onClick={event => this.handleClose(option, event)}
-                      key={option.value}
-                      value={option.value}
-                    >
-                      {option.label}
-                    </MenuItem>
-                  ))}
-                </TextField> */}
               </Grid>
+
               <Grid item xs={12}>
                 <FormControlLabel
                   control={
@@ -194,6 +181,7 @@ class App extends Component {
                 />
               </Grid>
             </Grid>
+
             <Button
               type="submit"
               fullWidth
