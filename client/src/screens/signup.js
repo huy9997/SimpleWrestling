@@ -41,8 +41,8 @@ class App extends Component {
       type_of_account: ""
     };
   }
-  onchange = e => {
-    console.log("test ", this.state, "this is the state");
+  onChange = e => {
+    console.log("tes ", this.state, "this is the state");
     this.setState({
       [e.target.name]: e.target.value
     });
@@ -111,7 +111,7 @@ class App extends Component {
                   id="firstName"
                   label="First Name"
                   autoFocus
-                  onChange={e => this.onchange(e)}
+                  onChange={e => this.onChange(e)}
                   value={this.state.first_name}
                 />
               </Grid>
@@ -125,7 +125,7 @@ class App extends Component {
                   label="Last Name"
                   name="lastName"
                   autoComplete="lname"
-                  onChange={e => this.onchange(e)}
+                  onChange={e => this.onChange(e)}
                   value={this.state.last_name}
                 />
               </Grid>
@@ -139,7 +139,7 @@ class App extends Component {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
-                  onChange={e => this.onchange(e)}
+                  onChange={e => this.onChange(e)}
                   value={this.state.email}
                 />
               </Grid>
@@ -154,7 +154,7 @@ class App extends Component {
                   type="password"
                   id="password"
                   autoComplete="current-password"
-                  onChange={e => this.onchange(e)}
+                  onChange={e => this.onChange(e)}
                   value={this.state.password}
                 />
               </Grid>
@@ -189,7 +189,7 @@ class App extends Component {
                   id="type_of_account"
                   select
                   label="Type of Account"
-                  onChange={e => this.onchange(e)}
+                  onChange={e => this.onChange(e)}
                   value={this.state.type_of_account}
                   helperText="Please select the type of account you would like to create"
                   margin="normal"
@@ -208,7 +208,7 @@ class App extends Component {
                 fullWidth
                 label="Team"
                 id="team"
-                onChange={e => this.onchange(e)}
+                onChange={e => this.onChange(e)}
                 value={this.state.team}
               />
               <Grid />
@@ -219,7 +219,7 @@ class App extends Component {
                 fullWidth
                 label="Weight Class"
                 id="weight_class"
-                onChange={e => this.onchange(e)}
+                onChange={e => this.onChange(e)}
                 value={this.state.weight_class}
               />
               <Grid />
@@ -230,7 +230,7 @@ class App extends Component {
                 fullWidth
                 label="Grade"
                 id="grade"
-                onChange={e => this.onchange(e)}
+                onChange={e => this.onChange(e)}
                 value={this.state.grade}
               />
               <Grid />
