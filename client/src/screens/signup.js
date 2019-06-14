@@ -49,7 +49,9 @@ class App extends Component {
     });
   };
   onSubmit = e => {
+    console.log("onsubmit clicked");
     if (this.state.type_of_account === "admin") {
+      console.log(" in admin");
       axios
         .post("api/signup", {
           first_name: this.state.first_name,
@@ -159,6 +161,7 @@ class App extends Component {
                   value={this.state.password}
                 />
               </Grid>
+              {/* date */}
               <Grid item xs={12}>
                 <TextField
                   variant="outlined"
@@ -167,6 +170,7 @@ class App extends Component {
                   name="date_of_birth"
                   type="date"
                   id="date_of_birth"
+                  onChange={e => this.onChange(e)}
                   value={this.state.date_of_birth}
                 />
               </Grid>
