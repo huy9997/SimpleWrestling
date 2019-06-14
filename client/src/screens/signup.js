@@ -42,7 +42,8 @@ class App extends Component {
     };
   }
   onChange = e => {
-    console.log("tes ", this.state, "this is the state");
+    console.log(this.state.first_name);
+    console.log("target name ", e.target.name, " target value", e.target.value);
     this.setState({
       [e.target.name]: e.target.value
     });
