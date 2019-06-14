@@ -8,6 +8,7 @@ router.post("/login", (req, res, next) => {
     failureRedirect: "/login",
     failureFlash: true
   })(req, res, next);
+  res.send("success");
 });
 router.get("/logout", (req, res) => {
   req.logout();

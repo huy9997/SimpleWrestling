@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
+const cors = require("cors");
+
 const signup = require("./signup");
 const auth = require("./auth");
 const createTournament = require("./createTournament");
@@ -10,6 +12,7 @@ const tournamentWeightClasses = require("./tournamentWeightClasses");
 const tournamentCreateBrackets = require("./tournamentCreateBrackets");
 const tournamentMatchResults = require("./tournamentMatchResults");
 
+router.use(cors());
 let isAdmin = (req, res, next) => {
   if (req.isAuthenticated() && req.user[0].type_of_account == "admin") {
     next();
