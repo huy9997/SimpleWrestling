@@ -105,11 +105,11 @@ class App extends Component {
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="fname"
-                  name="firstName"
+                  name="first_name"
                   variant="outlined"
                   required
                   fullWidth
-                  id="firstName"
+                  id="first_name"
                   label="First Name"
                   autoFocus
                   onChange={e => this.onChange(e)}
@@ -124,7 +124,7 @@ class App extends Component {
                   fullWidth
                   id="lastName"
                   label="Last Name"
-                  name="lastName"
+                  name="last_name"
                   autoComplete="lname"
                   onChange={e => this.onChange(e)}
                   value={this.state.last_name}
@@ -175,11 +175,11 @@ class App extends Component {
                   variant="outlined"
                   required
                   fullWidth
-                  name="home_town"
+                  name="address"
                   label="Home Town"
-                  type="address"
+                  type="home_town"
                   id="home_town"
-                  onChange={e => this.onchange(e)}
+                  onChange={e => this.onChange(e)}
                   value={this.state.address}
                 />
               </Grid>
@@ -187,6 +187,7 @@ class App extends Component {
               <Grid item xs={12}>
                 <TextField
                   id="type_of_account"
+                  name="type_of_account"
                   select
                   label="Type of Account"
                   onChange={e => this.onChange(e)}
@@ -208,6 +209,7 @@ class App extends Component {
                 fullWidth
                 label="Team"
                 id="team"
+                name="team"
                 onChange={e => this.onChange(e)}
                 value={this.state.team}
               />
@@ -219,6 +221,7 @@ class App extends Component {
                 fullWidth
                 label="Weight Class"
                 id="weight_class"
+                name="weight_class"
                 onChange={e => this.onChange(e)}
                 value={this.state.weight_class}
               />
@@ -230,6 +233,7 @@ class App extends Component {
                 fullWidth
                 label="Grade"
                 id="grade"
+                name="grade"
                 onChange={e => this.onChange(e)}
                 value={this.state.grade}
               />
