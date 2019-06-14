@@ -4,11 +4,12 @@ let passport = require("passport");
 
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", {
-    successRedirect: "/",
+    successRedirect: "/signup",
     failureRedirect: "/login",
     failureFlash: true
-  })(req, res, next);
-  res.send("success");
+  }),
+    res.json("sending response"),
+    (req, res, next);
 });
 router.get("/logout", (req, res) => {
   req.logout();
