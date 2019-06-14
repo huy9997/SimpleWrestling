@@ -166,7 +166,6 @@ class App extends Component {
                   name="date_of_birth"
                   type="date"
                   id="date_of_birth"
-                  onChange={e => this.onchange(e)}
                   value={this.state.date_of_birth}
                 />
               </Grid>
