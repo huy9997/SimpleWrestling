@@ -3,16 +3,27 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import Menu from "@material-ui/core/Menu";
 import Checkbox from "@material-ui/core/Checkbox";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles, styled } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import axios from "axios";
 
+const accountType = [
+  {
+    value: "wrestler",
+    label: "wrestler"
+  },
+  {
+    value: "admin",
+    label: "admin"
+  }
+];
 class App extends Component {
   constructor(props) {
     super(props);
@@ -21,7 +32,7 @@ class App extends Component {
       last_name: "",
       email: "",
       password: "",
-      date_of_birht: "",
+      date_of_birth: "",
       address: "",
       //wrestler
       team: "",
@@ -33,7 +44,23 @@ class App extends Component {
       type_of_account: ""
     };
   }
-
+  onchange = e => {
+    console.log(this.state.type_of_account, "this is the state");
+    this.setState({ [e.target.name]: e.target.value });
+  };
+  onSubmit = e => {
+    axios
+      .post("api/auth/login", {
+        email: this.state.email,
+        password: this.state.password
+      })
+      .then(function(response) {
+        console.log(response, "sucecss");
+      })
+      .catch(function(error) {
+        console.log(error, "error");
+      });
+  };
   render() {
     return (
       <Container component="main" maxWidth="xs">
@@ -44,7 +71,7 @@ class App extends Component {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <form mt={3} width={1} noValidate>
+          <Box mt={3} width={1} noValidate>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -56,6 +83,8 @@ class App extends Component {
                   id="firstName"
                   label="First Name"
                   autoFocus
+                  onChange={e => this.onchange(e)}
+                  value={this.state.first_name}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -67,6 +96,8 @@ class App extends Component {
                   label="Last Name"
                   name="lastName"
                   autoComplete="lname"
+                  onChange={e => this.onchange(e)}
+                  value={this.state.last_name}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -78,6 +109,8 @@ class App extends Component {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  onChange={e => this.onchange(e)}
+                  value={this.state.email}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -90,7 +123,67 @@ class App extends Component {
                   type="password"
                   id="password"
                   autoComplete="current-password"
+                  onChange={e => this.onchange(e)}
+                  value={this.state.password}
                 />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  name="date_of_birth"
+                  type="date"
+                  id="date_of_birth"
+                  onChange={e => this.onchange(e)}
+                  value={this.state.date_of_birth}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  name="home_town"
+                  label="Home Town"
+                  type="address"
+                  id="home_town"
+                  onChange={e => this.onchange(e)}
+                  value={this.state.address}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  select
+                  label="With Select"
+                  onChange={this.onchange}
+                  value={this.state.type_of_account}
+                >
+                  {accountType.map(option => (
+                    <MenuItem key={option.value} value={option.value}>
+                      {option.value}
+                    </MenuItem>
+                  ))}
+                </TextField>
+                {/* <TextField
+                  id="type_of_account"
+                  select
+                  label="Type of Account"
+                  value={this.state.type_of_account}
+                  onChange={this.onchange}
+                  helperText="Please select the type of account you would like to create"
+                  margin="normal"
+                >
+                  {accountType.map(option => (
+                    <MenuItem
+                      onClick={event => this.handleClose(option, event)}
+                      key={option.value}
+                      value={option.value}
+                    >
+                      {option.label}
+                    </MenuItem>
+                  ))}
+                </TextField> */}
               </Grid>
               <Grid item xs={12}>
                 <FormControlLabel
@@ -117,7 +210,7 @@ class App extends Component {
                 </Link>
               </Grid>
             </Grid>
-          </form>
+          </Box>
         </Box>
       </Container>
     );

@@ -1,26 +1,33 @@
 import React, { Component } from "react";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
-import Input from "@material-ui/core/Input";
-import Button from "@material-ui/core/Button";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
 import axios from "axios";
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
+      email: "",
       password: ""
     };
   }
   onchange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
-  onSubmit = () => {
+  onsubmit = () => {
     axios
-      .post("http://localhost:5000/api/auth/login", {
-        email: "admin@gmail.com",
-        password: "password"
+      .post("api/auth/login", {
+        email: this.state.email,
+        password: this.state.password
       })
       .then(function(response) {
         console.log(response, "sucecss");
@@ -30,37 +37,71 @@ class App extends Component {
       });
   };
   render() {
-    console.log(this.state);
     return (
-      <Grid container direction="column" justify="center">
-        <Grid container direction="row" justify="center" alignItems="center">
-          <Box
-            borderRadius={12}
-            border={1}
-            p={3}
-            display="flex"
-            flexDirection="column"
-          >
-            <Typography variant="h4" gutterBottom>
-              Login
-            </Typography>
-            <Input
+      <Container component="main" maxWidth="xs">
+        <Box mt={8} display="flex" flexDirection="column" alignItems="center">
+          <Avatar m={3}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Login
+          </Typography>
+          <Box mt={3} width={1} noValidate>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
               onChange={e => this.onchange(e)}
-              name="username"
-              value={this.state.username}
-              placeholder="username"
+              value={this.state.email}
             />
-            <Input
-              onChange={e => this.onchange(e)}
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
               name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              onChange={e => this.onchange(e)}
               value={this.state.password}
-              placeholder="password"
             />
-            <Button onClick={this.onSubmit}>Submit</Button>
-            <Button href="/signup">Signup</Button>
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              m={3}
+              onClick={this.onsubmit}
+            >
+              login
+            </Button>
+            <Grid container>
+              <Grid item xs>
+                <Link href="#" variant="body2">
+                  Forgot password?
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link href="/signup" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
+            </Grid>
           </Box>
-        </Grid>
-      </Grid>
+        </Box>
+      </Container>
     );
   }
 }
