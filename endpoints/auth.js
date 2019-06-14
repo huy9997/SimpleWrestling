@@ -7,9 +7,8 @@ router.post("/login", (req, res, next) => {
     successRedirect: "/signup",
     failureRedirect: "/login",
     failureFlash: true
-  }),
-    res.json("sending response"),
-    (req, res, next);
+  })(req, res, next);
+  res.json("response from backend");
 });
 router.get("/logout", (req, res) => {
   req.logout();
