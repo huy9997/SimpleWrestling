@@ -13,31 +13,6 @@ import { makeStyles, styled } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import axios from "axios";
 
-const useStyles = makeStyles(theme => ({
-  "@global": {
-    body: {
-      backgroundColor: "#fff"
-    }
-  },
-  paper: {
-    marginTop: theme.spacing(8),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center"
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: "#a3bac3"
-  },
-  form: {
-    width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(3)
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2)
-  }
-}));
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -60,18 +35,16 @@ class App extends Component {
   }
 
   render() {
-    const classes = useStyles();
-
     return (
       <Container component="main" maxWidth="xs">
-        <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
+        <Box mt={8} display="flex" flexDirection="column" alignItems="center">
+          <Avatar m={3}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <form className={classes.form} noValidate>
+          <form mt={3} width={1} noValidate>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -133,7 +106,7 @@ class App extends Component {
               fullWidth
               variant="contained"
               color="primary"
-              className={classes.submit}
+              m={3}
             >
               Sign Up
             </Button>
@@ -145,7 +118,7 @@ class App extends Component {
               </Grid>
             </Grid>
           </form>
-        </div>
+        </Box>
       </Container>
     );
   }
