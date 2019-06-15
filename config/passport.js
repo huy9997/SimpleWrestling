@@ -15,7 +15,6 @@ module.exports = function(passport) {
     new LocalStrategy(
       { usernameField: "email" },
       (email, password, callback) => {
-        console.log(email, "email is passpor");
         search
           .SearchUniqueEmail([email])
           .then(user => {
@@ -24,6 +23,7 @@ module.exports = function(passport) {
             if (!bcrypt.compareSync(password, user[0].password)) {
               return callback(null, false, { messasge: "Incorrect password" });
             }
+            console.log(user);
             return callback(null, user);
           })
           .catch(err => {

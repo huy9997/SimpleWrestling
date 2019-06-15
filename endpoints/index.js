@@ -13,6 +13,7 @@ const tournamentCreateBrackets = require("./tournamentCreateBrackets");
 const tournamentMatchResults = require("./tournamentMatchResults");
 
 router.use(cors());
+
 let isAdmin = (req, res, next) => {
   if (req.isAuthenticated() && req.user[0].type_of_account == "admin") {
     next();
