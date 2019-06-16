@@ -30,7 +30,7 @@ class App extends Component {
         password: this.state.password
       })
       .then(function(response) {
-        console.log(response, "sucecss");
+        console.log(response, "sucecss in sending data");
       })
       .catch(function(error) {
         console.log(error, "error");
