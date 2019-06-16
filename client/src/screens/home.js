@@ -1,0 +1,31 @@
+import React, { Component } from "react";
+import axios from "axios";
+import Button from "@material-ui/core/Button";
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: ""
+    };
+  }
+  onsubmit = () => {
+    console.log("submit a button");
+    axios
+      .get("api/createTournament/test")
+      .then(function(response) {
+        console.log(response, "sucecss in sending data");
+      })
+      .catch(function(error) {
+        console.log(error, "error");
+      });
+  };
+  render() {
+    return (
+      <div>
+        <Button onClick={this.onsubmit}>test button</Button>
+      </div>
+    );
+  }
+}
+export default App;
