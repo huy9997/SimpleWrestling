@@ -31,10 +31,6 @@ class App extends Component {
         password: this.state.password
       })
       .then(function(response) {
-        if (response.data === "success") {
-          console.log("redirect true");
-          return <Link to="/" />;
-        }
         console.log(response.data, "sucecss in sending data");
       })
       .catch(function(error) {

@@ -10,12 +10,14 @@ let passport = require("passport");
 //   })(req, res, next);
 // });
 
-router.post("/login", passport.authenticate("local"), function(req, res) {
-  // If this function gets called, authentication was successful.
-  // `req.user` contains the authenticated user.
-  console.log(req.user);
-  res.redirect("http://localhost:3000/");
-});
+router.post(
+  "/login",
+  passport.authenticate("local", { failureRedirect: "/login" }),
+  function(req, res) {
+    console.log("trying to redirect from auth");
+    res.redirect("/");
+  }
+);
 
 router.get("/logout", (req, res) => {
   req.logout();
