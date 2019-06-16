@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Button from "@material-ui/core/Button";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -9,11 +10,9 @@ class App extends Component {
     };
   }
   onsubmit = () => {
+    console.log("submit a button");
     axios
-      .post("api/auth/login", {
-        email: this.state.email,
-        password: this.state.password
-      })
+      .get("api/createTournament/test")
       .then(function(response) {
         console.log(response, "sucecss in sending data");
       })
@@ -22,7 +21,11 @@ class App extends Component {
       });
   };
   render() {
-    return <div />;
+    return (
+      <div>
+        <Button onClick={this.onsubmit}>test button</Button>
+      </div>
+    );
   }
 }
 export default App;
