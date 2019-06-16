@@ -23,6 +23,7 @@ class App extends Component {
   onchange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
+
   onsubmit = () => {
     axios
       .post("api/auth/login", {
@@ -30,7 +31,11 @@ class App extends Component {
         password: this.state.password
       })
       .then(function(response) {
-        console.log(response, "sucecss in sending data");
+        if (response.data === "success") {
+          console.log("redirect true");
+          return <Link to="/" />;
+        }
+        console.log(response.data, "sucecss in sending data");
       })
       .catch(function(error) {
         console.log(error, "error");
