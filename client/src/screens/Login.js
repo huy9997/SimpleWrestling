@@ -31,7 +31,7 @@ class App extends Component {
         password: this.state.password
       })
       .then(function(response) {
-        console.log(response.data, "sucecss in getting response data");
+        console.log(response.data, "response from client");
       })
       .catch(function(error) {
         console.log(error, "error");

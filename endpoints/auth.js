@@ -10,14 +10,12 @@ let passport = require("passport");
 //   })(req, res, next);
 // });
 
-router.post(
-  "/login",
-  passport.authenticate("local", { failureRedirect: "/login" }),
-  function(req, res) {
-    console.log("trying to redirect from auth");
-    res.redirect("/");
-  }
-);
+router.post("/login", passport.authenticate("local"), function(req, res) {
+  // If this function gets called, authentication was successful.
+  // `req.user` contains the authenticated user.
+  console.log(req.session, "session from backend");
+  res.json(req.session.passport.user[0].id);
+});
 
 router.get("/logout", (req, res) => {
   req.logout();

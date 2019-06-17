@@ -4,10 +4,7 @@ import Button from "@material-ui/core/Button";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      email: "",
-      password: ""
-    };
+    this.state = {};
   }
   onsubmit = () => {
     console.log("submit a button");
