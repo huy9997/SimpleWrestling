@@ -25,13 +25,16 @@ class App extends Component {
   };
 
   onsubmit = () => {
+    console.log("submit button");
     axios
       .post("api/auth/login", {
         email: this.state.email,
         password: this.state.password
       })
       .then(function(response) {
+        console.log("data response client ");
         console.log(response.data, "response from client");
+        const token = response.data;
       })
       .catch(function(error) {
         console.log(error, "error");
