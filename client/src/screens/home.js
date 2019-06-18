@@ -6,12 +6,13 @@ class App extends Component {
     super(props);
     this.state = {};
   }
+
   onsubmit = () => {
     console.log("submit a button");
     axios
       .get("api/createTournament/test")
       .then(function(response) {
-        console.log(response, "sucecss in sending data");
+        console.log(response, "sucecss in sending data from home page");
       })
       .catch(function(error) {
         console.log(error, "error");
