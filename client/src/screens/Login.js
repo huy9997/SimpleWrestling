@@ -35,7 +35,7 @@ class App extends Component {
       })
       .then(response => {
         console.log(response);
-        if (response.data == "successLogin") {
+        if (response.data === "successLogin") {
           console.log("success login");
           this.setState({
             loginRedirect: true
