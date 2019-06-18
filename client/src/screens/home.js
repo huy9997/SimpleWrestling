@@ -4,17 +4,15 @@ import Button from "@material-ui/core/Button";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      email: "",
-      password: ""
-    };
+    this.state = {};
   }
+
   onsubmit = () => {
     console.log("submit a button");
     axios
       .get("api/createTournament/test")
       .then(function(response) {
-        console.log(response, "sucecss in sending data");
+        console.log(response, "sucecss in sending data from home page");
       })
       .catch(function(error) {
         console.log(error, "error");

@@ -12,6 +12,8 @@ const tournamentWeightClasses = require("./tournamentWeightClasses");
 const tournamentCreateBrackets = require("./tournamentCreateBrackets");
 const tournamentMatchResults = require("./tournamentMatchResults");
 
+let passport = require("passport");
+
 router.use(cors());
 
 let isAdmin = (req, res, next) => {
