@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -17,28 +18,45 @@ class App extends Component {
     super(props);
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      loginRedirect: false
     };
   }
   onchange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
-  onsubmit = () => {
+
+  onsubmit = e => {
+    console.log("submit button");
     axios
       .post("api/auth/login", {
         email: this.state.email,
         password: this.state.password
       })
-      .then(function(response) {
-        console.log(response, "sucecss in sending data");
+      .then(response => {
+        console.log(response);
+        if (response.data == "successLogin") {
+          console.log("success login");
+          this.setState({
+            loginRedirect: true
+          });
+          console.log(this.state.loginRedirect, "values");
+        }
       })
       .catch(function(error) {
         console.log(error, "error");
       });
   };
+  renderRedirect = () => {
+    if (this.state.loginRedirect) {
+      return <Redirect to="/" />;
+    }
+  };
+
   render() {
     return (
       <Container component="main" maxWidth="xs">
+        {this.renderRedirect()}
         <Box mt={8} display="flex" flexDirection="column" alignItems="center">
           <Avatar m={3}>
             <LockOutlinedIcon />

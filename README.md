@@ -25,6 +25,9 @@ DB_DEV_HOST=
 DB_DEV_USER=
 DB_DEV_DATABASE=
 DB_DEV_PASSWORD=
+
+SESSION_SECRET=SECRET
+
 `
 
 How to run the development project:
