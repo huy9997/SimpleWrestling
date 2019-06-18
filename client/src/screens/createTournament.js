@@ -131,12 +131,12 @@ class App extends Component {
           {/* Tournament Flier*/}
           <FormControl margin="normal">
             <InputLabel>Tournament Flier</InputLabel>
-            <Input id="tournament_flier" onChange={onchange} />
+            <Input id="tournament_flier" type="file" onChange={onchange} />
           </FormControl>
           {/* Tournament Logo*/}
           <FormControl margin="normal">
             <InputLabel>Tournament Logo</InputLabel>
-            <Input id="tournament_logo" onChange={onchange} />
+            <Input id="tournament_logo" type="file" onChange={onchange} />
           </FormControl>
         </Box>
       </Container>
