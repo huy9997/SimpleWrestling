@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, BrowserRouter } from "react-router-dom";
-import login from "../screens/login";
+import login from "../screens/Login";
 import signup from "../screens/signup";
 import home from "../screens/home";
 
