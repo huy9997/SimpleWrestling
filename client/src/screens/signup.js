@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -38,7 +39,8 @@ class App extends Component {
       wins: "",
       losses: "",
       grade: "",
-      type_of_account: ""
+      type_of_account: "",
+      redirectToLogin: false
     };
   }
   onChange = e => {
@@ -62,7 +64,8 @@ class App extends Component {
           address: this.state.address,
           type_of_account: this.state.type_of_account
         })
-        .then(function(response) {
+        .then(response => {
+          this.setState({ redirectToLogin: true });
           console.log(response, "sucecss");
         })
         .catch(function(error) {
@@ -91,9 +94,15 @@ class App extends Component {
         });
     }
   };
+  renderRedirect = () => {
+    if (this.state.redirectToLogin) {
+      return <Redirect to="/login" />;
+    }
+  };
   render() {
     return (
       <Container component="main" maxWidth="xs">
+        {this.renderRedirect()}
         <Box mt={8} display="flex" flexDirection="column" alignItems="center">
           <Avatar m={3}>
             <LockOutlinedIcon />
