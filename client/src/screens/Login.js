@@ -13,17 +13,15 @@ import {
   Typography,
   Container
 } from "@material-ui/core";
-import { LockOutlinedIcon } from "@material-ui/icons";
+import { LockOutlined as LockOutlinedIcon } from "@material-ui/icons";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: "",
-      password: "",
-      loginRedirect: false
-    };
-  }
+  state = {
+    email: "",
+    password: "",
+    loginRedirect: false
+  };
+
   onchange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
