@@ -1,20 +1,19 @@
 import React, { Component } from "react";
-import { Redirect, Link as RouterLink } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import {
   Avatar,
   Button,
   TextField,
   FormControlLabel,
   Checkbox,
-  Link,
-  Grid,
   Box,
   Typography,
   Container
 } from "@material-ui/core";
 import { LockOutlined as LockOutlinedIcon } from "@material-ui/icons";
 
-import login from "../api/login";
+import login from "../../api/login";
+import Links from "./Links";
 
 const textFieldStyle = {
   variant: "outlined",
@@ -102,18 +101,7 @@ class Login extends Component {
             >
               login
             </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link variant="body2" component={RouterLink} to="#">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link variant="body2" component={RouterLink} to="/signup">
-                  Don't have an account? Sign Up
-                </Link>
-              </Grid>
-            </Grid>
+            <Links />
           </Box>
         </Box>
       </Container>
