@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link as RouterLink } from "react-router-dom";
 import {
   Avatar,
   Button,
@@ -107,12 +107,12 @@ class Login extends Component {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                <Link variant="body2" component={RouterLink} to="#">
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="/signup" variant="body2">
+                <Link variant="body2" component={RouterLink} to="/signup">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
