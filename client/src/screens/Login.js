@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import { Redirect, Link as RouterLink } from "react-router-dom";
 import {
   Avatar,
@@ -15,6 +14,8 @@ import {
 } from "@material-ui/core";
 import { LockOutlined as LockOutlinedIcon } from "@material-ui/icons";
 
+import login from "../api/login";
+
 class Login extends Component {
   state = {
     email: "",
@@ -26,30 +27,25 @@ class Login extends Component {
     this.setState({ [name]: value });
   };
 
-  onsubmit = e => {
+  onsubmit = () => {
     console.log("submit button");
-    axios
-      .post("api/auth/login", {
-        email: this.state.email,
-        password: this.state.password
-      })
-      .then(response => {
-        console.log(response);
-        if (response.data == "successLogin") {
-          console.log("success login");
+    const { email, password } = this.state;
+    login(email, password)
+      .then(success => {
+        if (success) {
           this.setState(
             {
-              loginRedirect: true
+              loginRedirect: success
             },
             () => {
               console.log(this.state.loginRedirect, "values");
             }
           );
+        } else {
+          // should probably show this to user
         }
       })
-      .catch(function(error) {
-        console.log(error, "error");
-      });
+      .catch(error => console.error(error)); // display errors as well
   };
 
   render() {
