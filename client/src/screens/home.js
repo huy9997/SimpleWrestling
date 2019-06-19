@@ -19,11 +19,7 @@ class App extends Component {
       });
   };
   render() {
-    return (
-      <div>
-        <Button onClick={this.onsubmit}>test button</Button>
-      </div>
-    );
+    return <Button onClick={this.onsubmit}>test button</Button>;
   }
 }
 export default App;
