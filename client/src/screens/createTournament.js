@@ -58,8 +58,13 @@ class App extends Component {
   onsubmit = e => {
     axios
       .post("api/createtournament", {
-        name: this.state,
-        password: this.state.password
+        name: this.state.name,
+        location: this.state.location,
+        description: this.state.description,
+        tournament_start_date: this.state.tournament_start_date,
+        tournament_end_date: this.state.tournament_end_date,
+        wrestling_style: this.state.wrestling_style,
+        wrestling_level: this.state.wrestling_level
       })
       .then(response => {
         console.log(response);
