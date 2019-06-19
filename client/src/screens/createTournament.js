@@ -7,6 +7,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Box from "@material-ui/core/Box";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
+import axios from "axios";
 
 const wrestlingStyles = [
   {
@@ -39,11 +40,42 @@ const wrestlingLevel = [
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      name: "",
+      location: "",
+      description: "",
+      tournament_start_date: Date,
+      tournament_end_date: Date,
+      wrestling_style: "",
+      wrestling_level: "",
+      tournament_logo: ""
+    };
   }
   onchange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
+
+  onsubmit = e => {
+    axios
+      .post("api/createtournament", {
+        name: this.state,
+        password: this.state.password
+      })
+      .then(response => {
+        console.log(response);
+        if (response.data === "successLogin") {
+          console.log("success login");
+          this.setState({
+            loginRedirect: true
+          });
+          console.log(this.state.loginRedirect, "values");
+        }
+      })
+      .catch(function(error) {
+        console.log(error, "error");
+      });
+  };
+
   render() {
     return (
       <Container component="main" maxWidth="xl" width="75%">
