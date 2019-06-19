@@ -68,13 +68,6 @@ class App extends Component {
       })
       .then(response => {
         console.log(response);
-        if (response.data === "successLogin") {
-          console.log("success login");
-          this.setState({
-            loginRedirect: true
-          });
-          console.log(this.state.loginRedirect, "values");
-        }
       })
       .catch(function(error) {
         console.log(error, "error");
