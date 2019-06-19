@@ -16,6 +16,12 @@ import { LockOutlined as LockOutlinedIcon } from "@material-ui/icons";
 
 import login from "../api/login";
 
+const textFieldStyle = {
+  variant: "outlined",
+  margin: "normal",
+  fullWidth: true
+};
+
 class Login extends Component {
   state = {
     email: "",
@@ -61,10 +67,8 @@ class Login extends Component {
           </Typography>
           <Box mt={3} width={1} noValidate>
             <TextField
-              variant="outlined"
-              margin="normal"
               required
-              fullWidth
+              {...textFieldStyle}
               id="email"
               label="Email Address"
               name="email"
@@ -74,10 +78,8 @@ class Login extends Component {
               value={this.state.email}
             />
             <TextField
-              variant="outlined"
-              margin="normal"
               required
-              fullWidth
+              {...textFieldStyle}
               name="password"
               label="Password"
               type="password"
@@ -108,7 +110,7 @@ class Login extends Component {
               </Grid>
               <Grid item>
                 <Link variant="body2" component={RouterLink} to="/signup">
-                  {"Don't have an account? Sign Up"}
+                  Don't have an account? Sign Up
                 </Link>
               </Grid>
             </Grid>
