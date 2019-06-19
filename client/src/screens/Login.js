@@ -15,15 +15,15 @@ import {
 } from "@material-ui/core";
 import { LockOutlined as LockOutlinedIcon } from "@material-ui/icons";
 
-class App extends Component {
+class Login extends Component {
   state = {
     email: "",
     password: "",
     loginRedirect: false
   };
 
-  onchange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+  onchange = ({ target: { name, value } }) => {
+    this.setState({ [name]: value });
   };
 
   onsubmit = e => {
@@ -124,4 +124,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Login;
