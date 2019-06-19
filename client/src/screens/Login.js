@@ -47,16 +47,11 @@ class Login extends Component {
         console.log(error, "error");
       });
   };
-  renderRedirect = () => {
-    if (this.state.loginRedirect) {
-      return <Redirect to="/" />;
-    }
-  };
 
   render() {
     return (
       <Container component="main" maxWidth="xs">
-        {this.renderRedirect()}
+        {this.state.loginRedirect && <Redirect to="/" />}
         <Box mt={8} display="flex" flexDirection="column" alignItems="center">
           <Avatar m={3}>
             <LockOutlinedIcon />
