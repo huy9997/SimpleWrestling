@@ -74,7 +74,7 @@ class Login extends Component {
               name="email"
               autoComplete="email"
               autoFocus
-              onChange={e => this.onchange(e)}
+              onChange={this.onchange}
               value={this.state.email}
             />
             <TextField
@@ -87,7 +87,7 @@ class Login extends Component {
               type="password"
               id="password"
               autoComplete="current-password"
-              onChange={e => this.onchange(e)}
+              onChange={this.onchange}
               value={this.state.password}
             />
             <FormControlLabel
