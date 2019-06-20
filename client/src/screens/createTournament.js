@@ -8,6 +8,7 @@ import Box from "@material-ui/core/Box";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import axios from "axios";
+import ls from "local-storage";
 
 const wrestlingStyles = [
   {
@@ -49,6 +50,7 @@ class App extends Component {
       wrestling_style: "",
       wrestling_level: "",
       tournament_logo: "",
+      tournament_flier: "",
       admin_account: ""
     };
   }
@@ -57,15 +59,19 @@ class App extends Component {
   };
 
   onsubmit = e => {
-    const {
+    let {
       name,
       location,
       description,
       tournament_start_date,
       tournament_end_date,
       wrestling_style,
-      wrestling_level
+      wrestling_level,
+      tournament_flier,
+      tournament_logo,
+      admin_account
     } = this.state;
+    admin_account = ls.get("userInfo")[1];
     axios
       .post("api/createtournament", {
         name: name,
@@ -74,7 +80,10 @@ class App extends Component {
         tournament_start_date: tournament_start_date,
         tournament_end_date: tournament_end_date,
         wrestling_style: wrestling_style,
-        wrestling_level: wrestling_level
+        wrestling_level: wrestling_level,
+        tournament_flier: tournament_flier,
+        tournament_logo: tournament_logo,
+        admin_account: admin_account
       })
       .then(response => {
         console.log(response);

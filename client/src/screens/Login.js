@@ -12,6 +12,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import axios from "axios";
+import ls from "local-storage";
 
 class App extends Component {
   constructor(props) {
@@ -36,6 +37,8 @@ class App extends Component {
       })
       .then(response => {
         if (response.data[0] === "successLogin") {
+          ls.set("userInfo", response.data);
+          console.log(ls.get("userInfo")[1], "userinfo");
           this.setState({
             loginRedirect: true
           });
