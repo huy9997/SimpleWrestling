@@ -8,6 +8,7 @@ import Box from "@material-ui/core/Box";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const wrestlingStyles = [
   {
@@ -48,7 +49,9 @@ class App extends Component {
       tournament_end_date: Date,
       wrestling_style: "",
       wrestling_level: "",
-      tournament_logo: ""
+      tournament_logo: "",
+      admin_account: "",
+      cookie: Cookies.get("username")
     };
   }
   onchange = e => {
@@ -56,15 +59,24 @@ class App extends Component {
   };
 
   onsubmit = e => {
+    const {
+      name,
+      location,
+      description,
+      tournament_start_date,
+      tournament_end_date,
+      wrestling_style,
+      wrestling_level
+    } = this.state;
     axios
       .post("api/createtournament", {
-        name: this.state.name,
-        location: this.state.location,
-        description: this.state.description,
-        tournament_start_date: this.state.tournament_start_date,
-        tournament_end_date: this.state.tournament_end_date,
-        wrestling_style: this.state.wrestling_style,
-        wrestling_level: this.state.wrestling_level
+        name: name,
+        location: location,
+        description: description,
+        tournament_start_date: tournament_start_date,
+        tournament_end_date: tournament_end_date,
+        wrestling_style: wrestling_style,
+        wrestling_level: wrestling_level
       })
       .then(response => {
         console.log(response);
@@ -79,6 +91,7 @@ class App extends Component {
       <Container component="main" maxWidth="xl" width="75%">
         <Box mt={8} display="flex" flexDirection="column" alignItems="center">
           {/* Tournament Name*/}
+          {this.state.cookie}
           <FormControl margin="normal" width={1}>
             <InputLabel>Tournament Name</InputLabel>
             <Input id="tournament_name" onChange={onchange} />

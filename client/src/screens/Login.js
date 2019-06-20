@@ -22,6 +22,7 @@ class App extends Component {
       loginRedirect: false
     };
   }
+
   onchange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -34,13 +35,10 @@ class App extends Component {
         password: this.state.password
       })
       .then(response => {
-        console.log(response);
-        if (response.data === "successLogin") {
-          console.log("success login");
+        if (response.data[0] === "successLogin") {
           this.setState({
             loginRedirect: true
           });
-          console.log(this.state.loginRedirect, "values");
         }
       })
       .catch(function(error) {
