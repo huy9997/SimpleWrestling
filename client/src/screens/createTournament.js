@@ -8,7 +8,6 @@ import Box from "@material-ui/core/Box";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import axios from "axios";
-import Cookies from "js-cookie";
 
 const wrestlingStyles = [
   {
@@ -50,8 +49,7 @@ class App extends Component {
       wrestling_style: "",
       wrestling_level: "",
       tournament_logo: "",
-      admin_account: "",
-      cookie: Cookies.get("username")
+      admin_account: ""
     };
   }
   onchange = e => {
