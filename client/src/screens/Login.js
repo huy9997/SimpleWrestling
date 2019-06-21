@@ -55,6 +55,7 @@ class App extends Component {
   };
 
   render() {
+    const { email, password } = this.state;
     return (
       <Container component="main" maxWidth="xs">
         {this.renderRedirect()}
@@ -77,7 +78,7 @@ class App extends Component {
               autoComplete="email"
               autoFocus
               onChange={e => this.onchange(e)}
-              value={this.state.email}
+              value={email}
             />
             <TextField
               variant="outlined"
@@ -90,7 +91,7 @@ class App extends Component {
               id="password"
               autoComplete="current-password"
               onChange={e => this.onchange(e)}
-              value={this.state.password}
+              value={password}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
