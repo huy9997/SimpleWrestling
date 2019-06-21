@@ -73,6 +73,7 @@ class App extends Component {
       admin_account
     } = this.state;
     admin_account = ls.get("userInfo")[1];
+    console.log(this.state, "the state of everything");
     axios
       .post("api/createtournament", {
         name: name,
@@ -96,7 +97,6 @@ class App extends Component {
 
   render() {
     const {
-      cookie,
       name,
       location,
       description,
@@ -111,11 +111,11 @@ class App extends Component {
       <Container component="main" maxWidth="xl" width="75%">
         <Box mt={8} display="flex" flexDirection="column" alignItems="center">
           {/* Tournament Name*/}
-          {cookie}
           <FormControl margin="normal" width={1}>
             <InputLabel>Tournament Name</InputLabel>
             <Input
-              id="tournament_name"
+              name="name"
+              id="name"
               onChange={e => this.onChange(e)}
               value={name}
             />
@@ -124,7 +124,8 @@ class App extends Component {
           <FormControl margin="normal" width={1}>
             <InputLabel>Location</InputLabel>
             <Input
-              id="location_name"
+              name="location"
+              id="location"
               onChange={e => this.onChange(e)}
               value={location}
             />
@@ -132,7 +133,12 @@ class App extends Component {
           {/* Description */}
           <FormControl margin="normal">
             <InputLabel>Description</InputLabel>
-            <Input id="description" onChange={onchange} value={description} />
+            <Input
+              name="description"
+              id="description"
+              onChange={e => this.onChange(e)}
+              value={description}
+            />
             <FormHelperText id="description-helper-text">
               Please provide any unique information about your Tournament!
             </FormHelperText>
@@ -145,7 +151,7 @@ class App extends Component {
               fullWidth
               label="Tournament Start Date"
               id="tournament_start_date "
-              name="tournament_start_date "
+              name="tournament_start_date"
               onChange={e => this.onChange(e)}
               value={tournament_start_date}
             />
@@ -157,8 +163,8 @@ class App extends Component {
               required
               fullWidth
               label="Tournament End Date"
-              id="tournament_end_date  "
-              name="tournament_end_date  "
+              id="tournament_end_date"
+              name="tournament_end_date"
               onChange={e => this.onChange(e)}
               value={tournament_end_date}
             />
@@ -170,7 +176,7 @@ class App extends Component {
               id="wrestling_style"
               name="wrestling_style"
               select
-              onChange={e => this.onchange(e)}
+              onChange={e => this.onChange(e)}
               value={wrestling_style}
               helperText="Please select the wrestling wrestling level"
               margin="normal"
@@ -205,6 +211,7 @@ class App extends Component {
           <FormControl margin="normal">
             <InputLabel>Tournament Flier</InputLabel>
             <Input
+              name="tournament_flier"
               id="tournament_flier"
               type="file"
               onChange={e => this.onChange(e)}
@@ -214,6 +221,7 @@ class App extends Component {
           <FormControl margin="normal">
             <InputLabel>Tournament Logo</InputLabel>
             <Input
+              name="tournament_logo"
               id="tournament_logo"
               type="file"
               onChange={e => this.onChange(e)}
