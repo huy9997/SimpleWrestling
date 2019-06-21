@@ -6,7 +6,9 @@ router.post(
   "/login",
   passport.authenticate("local", { failureRedirect: "/login" }),
   function(req, res) {
-    res.json("successLogin");
+    const { id, first_name, last_name, type_of_account } = req.user[0];
+    const values = ["successLogin", id, first_name, last_name, type_of_account];
+    res.json(values);
   }
 );
 

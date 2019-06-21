@@ -37,7 +37,9 @@ const navbar = () => {
           <Button color="inherit" href="/login">
             Login
           </Button>
-          <Button color="inherit">Tournament</Button>
+          <Button color="inherit" href="tournament">
+            Tournament
+          </Button>
         </Toolbar>
       </AppBar>
     </div>

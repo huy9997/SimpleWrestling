@@ -39,13 +39,11 @@ class App extends Component {
       wins: "",
       losses: "",
       grade: "",
-      type_of_account: "",
+      type_of_account: "wrestler",
       redirectToLogin: false
     };
   }
   onChange = e => {
-    console.log(this.state.first_name);
-    console.log("target name ", e.target.name, " target value", e.target.value);
     this.setState({
       [e.target.name]: e.target.value
     });
@@ -100,6 +98,8 @@ class App extends Component {
     }
   };
   render() {
+    const { type_of_account } = this.state;
+
     return (
       <Container component="main" maxWidth="xs">
         {this.renderRedirect()}
@@ -215,42 +215,48 @@ class App extends Component {
                   ))}
                 </TextField>
               </Grid>
-              {/* team */}
-              <Grid item xs={12} />
-              <TextField
-                variant="outlined"
-                fullWidth
-                label="Team"
-                id="team"
-                name="team"
-                onChange={e => this.onChange(e)}
-                value={this.state.team}
-              />
-              <Grid />
-              {/* weight class */}
-              <Grid item xs={12} />
-              <TextField
-                variant="outlined"
-                fullWidth
-                label="Weight Class"
-                id="weight_class"
-                name="weight_class"
-                onChange={e => this.onChange(e)}
-                value={this.state.weight_class}
-              />
-              <Grid />
-              {/* grade */}
-              <Grid item xs={12} />
-              <TextField
-                variant="outlined"
-                fullWidth
-                label="Grade"
-                id="grade"
-                name="grade"
-                onChange={e => this.onChange(e)}
-                value={this.state.grade}
-              />
-              <Grid />
+              {type_of_account === "wrestler" && (
+                <div>
+                  {" "}
+                  {/* team */}
+                  <Grid item xs={12} />
+                  <TextField
+                    variant="outlined"
+                    fullWidth
+                    label="Team"
+                    id="team"
+                    name="team"
+                    onChange={e => this.onChange(e)}
+                    value={this.state.team}
+                  />
+                  <Grid />
+                  {/* weight class */}
+                  <Grid item xs={12} />
+                  <TextField
+                    variant="outlined"
+                    fullWidth
+                    label="Weight Class"
+                    id="weight_class"
+                    name="weight_class"
+                    onChange={e => this.onChange(e)}
+                    value={this.state.weight_class}
+                  />
+                  <Grid />
+                  {/* grade */}
+                  <Grid item xs={12} />
+                  <TextField
+                    variant="outlined"
+                    fullWidth
+                    label="Grade"
+                    id="grade"
+                    name="grade"
+                    onChange={e => this.onChange(e)}
+                    value={this.state.grade}
+                  />
+                  <Grid />
+                </div>
+              )}
+
               {/* marketing conditions */}
 
               <Grid item xs={12}>
