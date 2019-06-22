@@ -13,7 +13,7 @@ const useStyles = makeStyles({
     maxWidth: 345
   },
   media: {
-    height: 140
+    height: 80
   }
 });
 
@@ -29,7 +29,7 @@ const tournamentCard = props => {
           title="Tournament picture"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography gutterBottom variant="h7" component="h2">
             {props.title}
           </Typography>
           <Typography gutterBottom variant="h10">
