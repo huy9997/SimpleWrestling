@@ -98,7 +98,15 @@ class App extends Component {
     }
   };
   render() {
-    const { type_of_account } = this.state;
+    const {
+      type_of_account,
+      first_name,
+      last_name,
+      password,
+      date_of_birth,
+      address,
+      email
+    } = this.state;
 
     return (
       <Container component="main" maxWidth="xs">
@@ -124,7 +132,7 @@ class App extends Component {
                   label="First Name"
                   autoFocus
                   onChange={e => this.onChange(e)}
-                  value={this.state.first_name}
+                  value={first_name}
                 />
               </Grid>
               {/* last name */}
@@ -138,7 +146,7 @@ class App extends Component {
                   name="last_name"
                   autoComplete="lname"
                   onChange={e => this.onChange(e)}
-                  value={this.state.last_name}
+                  value={last_name}
                 />
               </Grid>
               {/* email */}
@@ -152,7 +160,7 @@ class App extends Component {
                   name="email"
                   autoComplete="email"
                   onChange={e => this.onChange(e)}
-                  value={this.state.email}
+                  value={email}
                 />
               </Grid>
               {/* password */}
@@ -167,7 +175,7 @@ class App extends Component {
                   id="password"
                   autoComplete="current-password"
                   onChange={e => this.onChange(e)}
-                  value={this.state.password}
+                  value={password}
                 />
               </Grid>
               {/* date */}
@@ -180,7 +188,7 @@ class App extends Component {
                   type="date"
                   id="date_of_birth"
                   onChange={e => this.onChange(e)}
-                  value={this.state.date_of_birth}
+                  value={date_of_birth}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -193,7 +201,7 @@ class App extends Component {
                   type="home_town"
                   id="home_town"
                   onChange={e => this.onChange(e)}
-                  value={this.state.address}
+                  value={address}
                 />
               </Grid>
               {/* type of account */}
@@ -204,7 +212,7 @@ class App extends Component {
                   select
                   label="Type of Account"
                   onChange={e => this.onChange(e)}
-                  value={this.state.type_of_account}
+                  value={type_of_account}
                   helperText="Please select the type of account you would like to create"
                   margin="normal"
                 >

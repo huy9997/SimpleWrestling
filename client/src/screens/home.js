@@ -1,26 +1,49 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Button from "@material-ui/core/Button";
-
+import Box from "@material-ui/core/Box";
+import Card from "../components/generalComponents/card";
+import Container from "@material-ui/core/Container";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      cards: []
+    };
   }
 
-  onsubmit = () => {
-    console.log("submit a button");
+  componentDidMount() {
     axios
-      .get("api/createTournament/test")
-      .then(function(response) {
-        console.log(response, "sucecss in sending data from home page");
+      .get("/api/getTournamentCardData")
+      .then(tournamentCardData => {
+        this.setState({
+          cards: tournamentCardData.data
+        });
       })
-      .catch(function(error) {
-        console.log(error, "error");
+      .catch(err => {
+        console.log(err);
       });
-  };
+  }
+
   render() {
-    return <Button onClick={this.onsubmit}>test button</Button>;
+    const { cards } = this.state;
+    return (
+      <Container component="main" display="flex" flexDirection="column">
+        <Box>adding a carousel</Box>
+        <Box display="flex" flexDirection="row">
+          {cards.map(props => (
+            <Box m={1} width="100%">
+              <Card
+                title={props.name}
+                date={props.tournament_start_date}
+                imgURL={
+                  "https://s3.amazonaws.com/sidearm.sites/hawkeyesports.com/images/2018/3/20/180317NCAA0898.JPG"
+                }
+              />
+            </Box>
+          ))}
+        </Box>
+      </Container>
+    );
   }
 }
 export default App;
