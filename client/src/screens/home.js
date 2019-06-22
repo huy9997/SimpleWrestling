@@ -28,10 +28,10 @@ class App extends Component {
     const { cards } = this.state;
     return (
       <Container component="main" display="flex" flexDirection="column">
-        <Box height={450}>Height 75%</Box>
+        <Box>adding a carousel</Box>
         <Box display="flex" flexDirection="row">
           {cards.map(props => (
-            <Box m={1}>
+            <Box m={1} width="100%">
               <Card
                 title={props.name}
                 date={props.tournament_start_date}
