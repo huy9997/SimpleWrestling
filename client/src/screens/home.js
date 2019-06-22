@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Slide from "@material-ui/core/Slide";
+import Box from "@material-ui/core/Box";
 import Card from "../components/generalComponents/card";
+import Container from "@material-ui/core/Container";
+import Slide from "@material-ui/core/Slide";
 
 class App extends Component {
   constructor(props) {
@@ -28,15 +30,20 @@ class App extends Component {
   render() {
     const { cards } = this.state;
     return (
-      <div>
-        {cards.map(option => (
-          <Card
-            title={option.name}
-            date={option.tournament_start_date}
-            image={option.tournament_logo}
-          />
-        ))}
-      </div>
+      <Container component="main" display="flex" flexDirection="column">
+        <Box height="75%">Height 75%</Box>
+        <Box display="flex">
+          {cards.map(option => (
+            <Card
+              title={option.name}
+              date={option.tournament_start_date}
+              imgURL={
+                "https://s3.amazonaws.com/sidearm.sites/hawkeyesports.com/images/2018/3/20/180317NCAA0898.JPG"
+              }
+            />
+          ))}
+        </Box>
+      </Container>
     );
   }
 }

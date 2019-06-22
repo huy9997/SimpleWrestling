@@ -32,7 +32,7 @@ const tournamentCard = props => {
           <Typography gutterBottom variant="h5" component="h2">
             {props.title}
           </Typography>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography gutterBottom variant="h10">
             {props.date}
           </Typography>
         </CardContent>
@@ -40,9 +40,6 @@ const tournamentCard = props => {
       <CardActions>
         <Button size="small" color="primary">
           Sign Up
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
         </Button>
       </CardActions>
     </Card>
