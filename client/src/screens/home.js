@@ -6,17 +6,23 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cards: {
-        card: {
-          date: Date,
-          title: "",
-          picture: ""
-        }
-      }
+      cards: {}
     };
   }
+  card = {
+    date: Date,
+    title: "",
+    picture: ""
+  };
   componentDidMount() {
-    axios.get();
+    axios
+      .get("/api/getTournamentCardData")
+      .then(tournamentCardData => {
+        console.log(tournamentCardData.data[1]);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
   render() {
     return (
