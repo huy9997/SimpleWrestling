@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Slide from "@material-ui/core/Slide";
 import Card from "../components/generalComponents/card";
 
 class App extends Component {
@@ -23,6 +24,7 @@ class App extends Component {
         console.log(err);
       });
   }
+
   render() {
     const { cards } = this.state;
     return (
