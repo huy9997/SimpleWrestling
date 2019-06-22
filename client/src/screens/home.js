@@ -6,28 +6,34 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cards: {}
+      cards: []
     };
   }
-  card = {
-    date: Date,
-    title: "",
-    picture: ""
-  };
+
   componentDidMount() {
     axios
       .get("/api/getTournamentCardData")
       .then(tournamentCardData => {
-        console.log(tournamentCardData.data[1]);
+        this.setState({
+          cards: tournamentCardData.data
+        });
+        console.log(this.state.cards, "state");
       })
       .catch(err => {
         console.log(err);
       });
   }
   render() {
+    const { cards } = this.state;
     return (
       <div>
-        <Card />
+        {cards.map(option => (
+          <Card
+            title={option.name}
+            date={option.tournament_start_date}
+            image={option.tournament_logo}
+          />
+        ))}
       </div>
     );
   }
