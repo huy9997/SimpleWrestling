@@ -13,9 +13,7 @@ class App extends Component {
       search: ""
     };
   }
-  onchange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+
   componentDidMount() {
     axios
       .get("/api/getTournamentCardData/tournament")
@@ -29,11 +27,26 @@ class App extends Component {
       });
   }
 
+  onchange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+    console.log(this.state.search);
+    // axios
+    //   .post("api/searchTournament")
+    //   .then(tournamentSearchData => {
+    //     this.state({
+    //       cards: tournamentSearchData
+    //     });
+    //   })
+    //   .catch(err => {
+    //     console.log(err, "err");
+    //   });
+  };
+
   render() {
     const { cards, search } = this.state;
     return (
-      <Container component="main" display="flex" flexDirection="column">
-        <Box display="flex" flexDirection="row-reverse">
+      <Container component="main" display="flex" flexdirection="column">
+        <Box display="flex" flexdirection="row-reverse">
           <Button href="/createtournament"> Create Tournament</Button>
         </Box>
         <Input
@@ -41,7 +54,7 @@ class App extends Component {
           onChange={e => this.onchange(e)}
           value={search}
         />
-        <Box display="flex" flexDirection="row" flexWrap="wrap">
+        <Box display="flex" flexdirection="row" flexwrap="wrap">
           {cards.map(props => (
             <Box m={1}>
               <Card
