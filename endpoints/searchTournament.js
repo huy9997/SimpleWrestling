@@ -1,7 +1,18 @@
 let express = require("express");
 let router = express.Router();
-let search = require("../db/search");
+let searchDB = require("../db/search");
 
-router.post("/", (req, res) => {});
+router.post("/", (req, res) => {
+  let { search } = req.body;
+  search = "%" + search + "%";
+  searchDB
+    .SearchTournament([search])
+    .then(searchCardDataResults => {
+      res.json(searchCardDataResults);
+    })
+    .catch(err => {
+      res.json("error in searching for a tournament");
+    });
+});
 
 module.exports = router;

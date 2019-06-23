@@ -18,6 +18,7 @@ class App extends Component {
     axios
       .get("/api/getTournamentCardData/tournament")
       .then(tournamentCardData => {
+        console.log(tournamentCardData.data, "component mount");
         this.setState({
           cards: tournamentCardData.data
         });
@@ -28,18 +29,17 @@ class App extends Component {
   }
 
   onchange = e => {
-    console.log(e.tar, "e");
     this.setState({ [e.target.name]: e.target.value });
-    console.log(this.state.search);
+
     axios
-      .post("api/searchTournament")
-      .then(tournamentSearchData => {
-        this.state({
-          cards: tournamentSearchData
-        });
+      .post("api/searchTournament", {
+        search: this.state.search
       })
-      .catch(err => {
-        console.log(err, "err");
+      .then(function(response) {
+        console.log(response.data, "data");
+      })
+      .catch(function(error) {
+        console.log(error);
       });
   };
 
