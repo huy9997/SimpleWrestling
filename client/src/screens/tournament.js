@@ -36,7 +36,9 @@ class App extends Component {
         search: this.state.search
       })
       .then(function(response) {
-        console.log(response.data, "data");
+        this.setState({
+          cards: response.data
+        });
       })
       .catch(function(error) {
         console.log(error);
