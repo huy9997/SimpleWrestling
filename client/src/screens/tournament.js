@@ -13,7 +13,7 @@ class App extends Component {
 
   componentDidMount() {
     axios
-      .get("/api/getTournamentCardData")
+      .get("/api/getTournamentCardData/tournament")
       .then(tournamentCardData => {
         this.setState({
           cards: tournamentCardData.data
