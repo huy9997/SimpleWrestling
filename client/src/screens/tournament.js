@@ -12,6 +12,7 @@ class App extends Component {
       cards: [],
       search: ""
     };
+    this.onchange = this.onchange.bind(this);
   }
 
   componentDidMount() {
@@ -29,18 +30,16 @@ class App extends Component {
   }
 
   onchange = e => {
+    e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
-
     axios
       .post("api/searchTournament", {
         search: this.state.search
       })
-      .then(function(response) {
-        this.setState({
-          cards: response.data
-        });
+      .then(response => {
+        this.setState({ cards: response.data });
       })
-      .catch(function(error) {
+      .catch(error => {
         console.log(error);
       });
   };
