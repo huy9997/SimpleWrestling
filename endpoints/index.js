@@ -12,6 +12,7 @@ const tournamentWeightClasses = require("./tournamentWeightClasses");
 const tournamentCreateBrackets = require("./tournamentCreateBrackets");
 const tournamentMatchResults = require("./tournamentMatchResults");
 const getTournamentCardData = require("./getTournamentCardData");
+const searchTournament = require("./searchTournament");
 
 router.use(cors());
 
@@ -39,5 +40,6 @@ router.use("/tournamentSignUp", isWrestler, tournamentSignUp);
 router.use("/tournamentBrackets", tournamentBrackets);
 router.use("/tournamentMatchResults", tournamentMatchResults);
 router.use("/getTournamentCardData", getTournamentCardData);
+router.use("/searchTournament", searchTournament);
 
 module.exports = router;

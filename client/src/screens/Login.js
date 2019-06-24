@@ -38,7 +38,6 @@ class App extends Component {
       .then(response => {
         if (response.data[0] === "successLogin") {
           ls.set("userInfo", response.data);
-          console.log(ls.get("userInfo")[1], "userinfo");
           this.setState({
             loginRedirect: true
           });
