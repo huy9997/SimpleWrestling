@@ -1,6 +1,7 @@
 let express = require("express");
 let router = express.Router();
 let tournament = require("../db/tournament");
+let format = require("date-format");
 
 router.get("/", (req, res) => {
   tournament
@@ -14,7 +15,7 @@ router.get("/", (req, res) => {
 });
 router.get("/tournament", (req, res) => {
   tournament
-    .GetTournamentCardData([9])
+    .GetTournamentCardData([12])
     .then(cardData => {
       res.json(cardData);
     })
