@@ -17,7 +17,7 @@ const useStyles = makeStyles({
     height: 80
   },
   paper: {
-    background: "white",
+    background: "#eee",
     position: "fixed",
     top: "50%",
     left: "50%",
