@@ -7,9 +7,18 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import TournamentSignUp from "./tournamentSignUp";
 import Modal from "@material-ui/core/Modal";
 
+function getModalStyle() {
+  const top = 50;
+  const left = 50;
+
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`
+  };
+}
 const useStyles = makeStyles({
   card: {
     maxWidth: 345
@@ -18,6 +27,7 @@ const useStyles = makeStyles({
     height: 80
   },
   paper: {
+    background: "white",
     position: "fixed",
     top: "50%",
     left: "50%",
@@ -30,6 +40,7 @@ const useStyles = makeStyles({
 const tournamentCard = props => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [modalStyle] = React.useState(getModalStyle);
   const handleOpen = () => {
     setOpen(true);
   };
@@ -60,7 +71,12 @@ const tournamentCard = props => {
           Sign Up
         </Button>
 
-        <Modal open={open} className={classes.paper} onClose={handleClose}>
+        <Modal
+          style={modalStyle}
+          open={open}
+          className={classes.paper}
+          onClose={handleClose}
+        >
           <Typography variant="h6">Modal</Typography>
         </Modal>
       </CardActions>
