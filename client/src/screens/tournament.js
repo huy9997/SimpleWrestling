@@ -80,9 +80,11 @@ class App extends Component {
         tournament_id: this.state.modalTournamentID
       })
       .then(response => {
+        console.log(response);
         this.setState({ modal: false });
       })
       .catch(err => {
+        console.log(err);
         // setup a alert
       });
     //post request for the wrestler sign up then closing out of the modal
