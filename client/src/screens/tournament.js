@@ -71,13 +71,24 @@ class App extends Component {
     this.setState({ modalTournamentID: id, modal: true });
   };
   onModalClose = e => {
+    const {
+      modalSeedingNotes,
+      modalWeightClass,
+      modalTournamentID
+    } = this.state;
     const userID = ls.get("userInfo");
+    console.log(
+      modalSeedingNotes,
+      modalWeightClass,
+      " weight class and seeding notes"
+    );
+    console.log(modalWeightClass, modalSeedingNotes);
     axios
       .post("api/tournamentSignUp", {
-        seeding_names: this.state.modalSeedingNotes,
-        tournament_weightclass: this.state.tournament_weightclass,
+        seeding_notes: modalSeedingNotes,
+        tournament_weight_class: modalWeightClass,
         userWrestler_id: userID[1],
-        tournament_id: this.state.modalTournamentID
+        tournament_id: modalTournamentID
       })
       .then(response => {
         console.log(response);
