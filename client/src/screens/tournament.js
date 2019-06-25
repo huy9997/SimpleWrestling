@@ -66,11 +66,27 @@ class App extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
   onModalOpen = id => {
+    const userID = ls.get("userInfo");
+    console.log(userID[1], "userid ");
     this.setState({ modalTournamentID: id, modal: true });
   };
   onModalClose = e => {
+    const userID = ls.get("userInfo");
+
+    axios
+      .post("api/tournamentSignUp", {
+        seeding_names: this.state.modalSeedingNotes,
+        tournament_weightclass: this.state.tournament_weightclass,
+        userWrestler_id: userID[1],
+        tournament_id: this.state.modalTournamentID
+      })
+      .then(response => {
+        this.setState({ modal: false });
+      })
+      .catch(err => {
+        // setup a alert
+      });
     //post request for the wrestler sign up then closing out of the modal
-    this.setState({ modal: false });
   };
   onModalSubmit = e => {};
 
