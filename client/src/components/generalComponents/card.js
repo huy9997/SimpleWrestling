@@ -16,6 +16,12 @@ const useStyles = makeStyles({
   },
   media: {
     height: 80
+  },
+  paper: {
+    position: "absolute",
+    backgroundColor: "blue",
+    width: 400,
+    outline: "none"
   }
 });
 
@@ -29,6 +35,7 @@ const tournamentCard = props => {
   const handleClose = () => {
     setOpen(false);
   };
+
   return (
     <Card className={classes.card}>
       <CardActionArea>
@@ -51,7 +58,7 @@ const tournamentCard = props => {
           Sign Up
         </Button>
 
-        <Modal open={open} onClose={handleClose}>
+        <Modal open={open} className={classes.paper} onClose={handleClose}>
           <Typography variant="h6">Modal</Typography>
         </Modal>
       </CardActions>
