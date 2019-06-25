@@ -5,15 +5,33 @@ import Card from "../components/generalComponents/card";
 import Container from "@material-ui/core/Container";
 import { Button } from "@material-ui/core";
 import Input from "@material-ui/core/Input";
+import Typography from "@material-ui/core/Typography";
+import ls from "local-storage";
+import Modal from "react-modal";
+
+const modalCustomStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)"
+  }
+};
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       cards: [],
       search: "",
-      modal: false
+      modal: false,
+      modalWrestlerID: "",
+      modalTournamentID: "",
+      modalSeedingNotes: "",
+      modalWeightClass: ""
     };
-    this.onchange = this.onchange.bind(this);
+    this.searchOnchange = this.searchOnchange.bind(this);
   }
 
   componentDidMount() {
@@ -30,7 +48,7 @@ class App extends Component {
       });
   }
 
-  onchange = e => {
+  searchOnchange = e => {
     e.preventDefault();
     this.setState({ [e.target.name]: e.target.value });
     axios
@@ -44,13 +62,26 @@ class App extends Component {
         console.log(error);
       });
   };
-  onClick = id => {
-    this.setState({ modal: true });
-    console.log(id, "pressed from the tournament page");
+  onchange = e => {
+    this.setState({ [e.target.name]: e.target.value });
   };
+  onModalOpen = id => {
+    this.setState({ modalTournamentID: id, modal: true });
+  };
+  onModalClose = e => {
+    //post request for the wrestler sign up then closing out of the modal
+    this.setState({ modal: false });
+  };
+  onModalSubmit = e => {};
 
   render() {
-    const { cards, search } = this.state;
+    const {
+      cards,
+      search,
+      modal,
+      modalSeedingNotes,
+      modalWeightClass
+    } = this.state;
     return (
       <Container component="main" display="flex" flexdirection="column">
         <Box display="flex" flexdirection="row-reverse">
@@ -60,7 +91,7 @@ class App extends Component {
           name="search"
           id="search"
           placeholder="search"
-          onChange={e => this.onchange(e)}
+          onChange={e => this.searchOnchange(e)}
           value={search}
         />
         <Box display="flex" flexdirection="row" flexWrap="wrap">
@@ -72,12 +103,39 @@ class App extends Component {
                 imgURL={
                   "https://s3.amazonaws.com/sidearm.sites/hawkeyesports.com/images/2018/3/20/180317NCAA0898.JPG"
                 }
-                onClick={this.onClick}
+                onClick={this.onModalOpen}
                 id={cardData.id}
               />
             </Box>
           ))}
         </Box>
+        {modal && (
+          <Modal
+            style={modalCustomStyles}
+            isOpen={modal}
+            contentLabel="Wrestler Sign up"
+          >
+            <Typography component="h1" variant="h5">
+              Wrestler Sign Up
+            </Typography>
+            <Box display="flex" flexDirection="column" m={2}>
+              <Input
+                name="modalSeedingNotes"
+                id="modalSeedingNotes"
+                onChange={e => this.onchange(e)}
+                value={modalSeedingNotes}
+              />
+              <Input
+                name="modalWeightClass"
+                id="modalWeightClass"
+                onChange={e => this.onchange(e)}
+                value={modalWeightClass}
+              />
+            </Box>
+
+            <Button onClick={this.onModalClose}>close</Button>
+          </Modal>
+        )}
       </Container>
     );
   }
