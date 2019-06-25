@@ -72,7 +72,6 @@ class App extends Component {
   };
   onModalClose = e => {
     const userID = ls.get("userInfo");
-
     axios
       .post("api/tournamentSignUp", {
         seeding_names: this.state.modalSeedingNotes,
@@ -135,12 +134,18 @@ class App extends Component {
               Wrestler Sign Up
             </Typography>
             <Box display="flex" flexDirection="column" m={2}>
+              <Typography component="h4">
+                Enter any seeding notes or major accomplishments:{" "}
+              </Typography>
               <Input
                 name="modalSeedingNotes"
                 id="modalSeedingNotes"
                 onChange={e => this.onchange(e)}
                 value={modalSeedingNotes}
               />
+              <Typography component="h4">
+                Enter the a weight class you would like to compete in:
+              </Typography>
               <Input
                 name="modalWeightClass"
                 id="modalWeightClass"
@@ -148,8 +153,7 @@ class App extends Component {
                 value={modalWeightClass}
               />
             </Box>
-
-            <Button onClick={this.onModalClose}>close</Button>
+            <Button onClick={this.onModalClose}>Sign Up</Button>
           </Modal>
         )}
       </Container>
