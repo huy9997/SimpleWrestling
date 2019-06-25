@@ -18,10 +18,12 @@ const useStyles = makeStyles({
     height: 80
   },
   paper: {
-    position: "absolute",
-    backgroundColor: "blue",
-    width: 400,
-    outline: "none"
+    position: "fixed",
+    top: "50%",
+    left: "50%",
+    outline: "none",
+    width: "30%",
+    height: "30%"
   }
 });
 
