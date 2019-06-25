@@ -19,7 +19,6 @@ const useStyles = makeStyles({
 
 const tournamentCard = props => {
   const classes = useStyles();
-
   return (
     <Card className={classes.card}>
       <CardActionArea>
@@ -38,7 +37,13 @@ const tournamentCard = props => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
+        <Button
+          size="small"
+          color="primary"
+          onClick={() => {
+            props.onClick(props.id);
+          }}
+        >
           Sign Up
         </Button>
       </CardActions>

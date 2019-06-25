@@ -10,7 +10,8 @@ class App extends Component {
     super(props);
     this.state = {
       cards: [],
-      search: ""
+      search: "",
+      modal: false
     };
     this.onchange = this.onchange.bind(this);
   }
@@ -43,6 +44,10 @@ class App extends Component {
         console.log(error);
       });
   };
+  onClick = id => {
+    this.setState({ modal: true });
+    console.log(id, "pressed from the tournament page");
+  };
 
   render() {
     const { cards, search } = this.state;
@@ -59,14 +64,16 @@ class App extends Component {
           value={search}
         />
         <Box display="flex" flexdirection="row" flexWrap="wrap">
-          {cards.map(props => (
-            <Box m={1}>
+          {cards.map(cardData => (
+            <Box m={1} key={cardData.id}>
               <Card
-                title={props.name}
-                date={props.tournament_start_date}
+                title={cardData.name}
+                date={cardData.tournament_start_date}
                 imgURL={
                   "https://s3.amazonaws.com/sidearm.sites/hawkeyesports.com/images/2018/3/20/180317NCAA0898.JPG"
                 }
+                onClick={this.onClick}
+                id={cardData.id}
               />
             </Box>
           ))}
