@@ -32,6 +32,7 @@ class App extends Component {
       modalWeightClass: ""
     };
     this.searchOnchange = this.searchOnchange.bind(this);
+    this.onClickTournamentBracket = this.onClickTournamentBracket.bind(this);
   }
 
   componentDidMount() {
@@ -66,8 +67,6 @@ class App extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
   onModalOpen = id => {
-    const userID = ls.get("userInfo");
-    console.log(userID[1], "userid ");
     this.setState({ modalTournamentID: id, modal: true });
   };
   onModalCloseSignUp = e => {
@@ -103,6 +102,7 @@ class App extends Component {
   onModalClose = e => {
     this.setState({ modal: false });
   };
+  onClickTournamentBracket = e => {};
 
   render() {
     const {
@@ -169,7 +169,6 @@ class App extends Component {
               />
             </Box>
             <Button onClick={this.onModalCloseSignUp}>Sign Up</Button>
-            <Button onClick={this.onModalClose}>Close</Button>
           </Modal>
         )}
       </Container>

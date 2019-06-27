@@ -46,6 +46,16 @@ const tournamentCard = props => {
         >
           Sign Up
         </Button>
+        <Button
+          size="small"
+          color="primary"
+          onClick={() => {
+            // props.onClick(props.id);
+            props.history.push("./tournamentBracket");
+          }}
+        >
+          Brackets
+        </Button>
       </CardActions>
     </Card>
   );
