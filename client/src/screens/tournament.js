@@ -70,7 +70,7 @@ class App extends Component {
     console.log(userID[1], "userid ");
     this.setState({ modalTournamentID: id, modal: true });
   };
-  onModalClose = e => {
+  onModalCloseSignUp = e => {
     const {
       modalSeedingNotes,
       modalWeightClass,
@@ -100,7 +100,9 @@ class App extends Component {
       });
     //post request for the wrestler sign up then closing out of the modal
   };
-  onModalSubmit = e => {};
+  onModalClose = e => {
+    this.setState({ modal: false });
+  };
 
   render() {
     const {
@@ -166,7 +168,8 @@ class App extends Component {
                 value={modalWeightClass}
               />
             </Box>
-            <Button onClick={this.onModalClose}>Sign Up</Button>
+            <Button onClick={this.onModalCloseSignUp}>Sign Up</Button>
+            <Button onClick={this.onModalClose}>Close</Button>
           </Modal>
         )}
       </Container>
