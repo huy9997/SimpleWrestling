@@ -3,7 +3,6 @@ import axios from "axios";
 import Box from "@material-ui/core/Box";
 import Card from "../components/generalComponents/card";
 import Container from "@material-ui/core/Container";
-import { Link } from "react-router-dom";
 import { Button } from "@material-ui/core";
 import Input from "@material-ui/core/Input";
 import Typography from "@material-ui/core/Typography";
@@ -104,8 +103,7 @@ class App extends Component {
     this.setState({ modal: false });
   };
   onClickTournamentBracket = e => {
-    console.log("hello");
-    return <Link to="/tournamentBracket" />;
+    console.log("tournament brackets");
   };
 
   render() {

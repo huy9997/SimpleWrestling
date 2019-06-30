@@ -47,15 +47,18 @@ const tournamentCard = props => {
         >
           Sign Up
         </Button>
-        <Button
+        <Link
           size="small"
           color="primary"
-          onClick={() => {
-            props.bracketButton(props.bracketsButton);
+          to={{
+            pathname: "/tournamentBracket",
+            state: {
+              tournamentID: 1
+            }
           }}
         >
           Brackets
-        </Button>
+        </Link>
       </CardActions>
     </Card>
   );

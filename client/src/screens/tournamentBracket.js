@@ -10,7 +10,8 @@ class App extends Component {
   }
 
   render() {
-    return <div>tournament bracket page</div>;
+    console.log(this.props.location.state.tournamentID);
+    return <div>tournament id is </div>;
   }
 }
 export default App;
