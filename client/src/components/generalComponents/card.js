@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
+import { Link } from "react-router-dom";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -50,8 +51,7 @@ const tournamentCard = props => {
           size="small"
           color="primary"
           onClick={() => {
-            // props.onClick(props.id);
-            props.history.push("./tournamentBracket");
+            props.bracketButton(props.bracketsButton);
           }}
         >
           Brackets

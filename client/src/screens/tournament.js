@@ -3,6 +3,7 @@ import axios from "axios";
 import Box from "@material-ui/core/Box";
 import Card from "../components/generalComponents/card";
 import Container from "@material-ui/core/Container";
+import { Link } from "react-router-dom";
 import { Button } from "@material-ui/core";
 import Input from "@material-ui/core/Input";
 import Typography from "@material-ui/core/Typography";
@@ -102,7 +103,10 @@ class App extends Component {
   onModalClose = e => {
     this.setState({ modal: false });
   };
-  onClickTournamentBracket = e => {};
+  onClickTournamentBracket = e => {
+    console.log("hello");
+    return <Link to="/tournamentBracket" />;
+  };
 
   render() {
     const {
@@ -134,6 +138,7 @@ class App extends Component {
                   "https://s3.amazonaws.com/sidearm.sites/hawkeyesports.com/images/2018/3/20/180317NCAA0898.JPG"
                 }
                 onClick={this.onModalOpen}
+                bracketButton={this.onClickTournamentBracket}
                 id={cardData.id}
               />
             </Box>
