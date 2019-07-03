@@ -10,8 +10,8 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props.location.state.tournamentID);
-    return <div>tournament id is </div>;
+    const tournamentID = this.props.location.state.tournamentID;
+    return <div>tournament id is {tournamentID}</div>;
   }
 }
 export default App;

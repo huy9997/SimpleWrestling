@@ -53,7 +53,7 @@ const tournamentCard = props => {
           to={{
             pathname: "/tournamentBracket",
             state: {
-              tournamentID: 1
+              tournamentID: props.tournamentID
             }
           }}
         >

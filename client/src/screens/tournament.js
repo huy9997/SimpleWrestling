@@ -29,7 +29,8 @@ class App extends Component {
       modalWrestlerID: "",
       modalTournamentID: "",
       modalSeedingNotes: "",
-      modalWeightClass: ""
+      modalWeightClass: "",
+      tournamentID: ""
     };
     this.searchOnchange = this.searchOnchange.bind(this);
     this.onClickTournamentBracket = this.onClickTournamentBracket.bind(this);
@@ -102,7 +103,8 @@ class App extends Component {
   onModalClose = e => {
     this.setState({ modal: false });
   };
-  onClickTournamentBracket = e => {
+  onClickTournamentBracket = id => {
+    this.setState({ tournamentID: id });
     console.log("tournament brackets");
   };
 
@@ -138,6 +140,8 @@ class App extends Component {
                 onClick={this.onModalOpen}
                 bracketButton={this.onClickTournamentBracket}
                 id={cardData.id}
+                //get tournament id
+                tournamentID={21}
               />
             </Box>
           ))}
