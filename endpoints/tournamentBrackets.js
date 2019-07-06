@@ -5,11 +5,10 @@ const tournaments = require("../db/tournament");
 router.get("/", (req, res) => {
   const { weight_class_id, tournament_id } = req.query;
   values = [tournament_id, weight_class_id];
+  //get weight class brackets
   tournaments
     .getWeightClassBouts(values)
     .then(boutsResults => {
-      //if needed
-      //loops through the objects to break down the wrestler info for each weight class
       res.json(boutsResults);
     })
     .catch(err => {

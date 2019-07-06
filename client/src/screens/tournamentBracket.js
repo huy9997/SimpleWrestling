@@ -13,8 +13,11 @@ class App extends Component {
     this.setState({ tournamentID: this.props.location.state.tournamentID });
   }
 
+  gettourn;
+
   render() {
     const { tournamentID } = this.state;
+
     return <div>tournament id is {tournamentID}</div>;
   }
 }
