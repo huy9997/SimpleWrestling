@@ -20,6 +20,7 @@ const useStyles = makeStyles({
 
 const tournamentCard = props => {
   const classes = useStyles();
+  console.log(props.tournamentID);
   return (
     <Card className={classes.card}>
       <CardActionArea>

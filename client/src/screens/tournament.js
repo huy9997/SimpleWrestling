@@ -105,7 +105,6 @@ class App extends Component {
   };
   onClickTournamentBracket = id => {
     this.setState({ tournamentID: id });
-    console.log("tournament brackets");
   };
 
   render() {
@@ -138,10 +137,9 @@ class App extends Component {
                   "https://s3.amazonaws.com/sidearm.sites/hawkeyesports.com/images/2018/3/20/180317NCAA0898.JPG"
                 }
                 onClick={this.onModalOpen}
-                bracketButton={this.onClickTournamentBracket}
                 id={cardData.id}
                 //get tournament id
-                tournamentID={21}
+                tournamentID={cardData.id}
               />
             </Box>
           ))}
