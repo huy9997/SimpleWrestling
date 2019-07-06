@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Container from "@material-ui/core/Container";
+import Button from "@material-ui/core/Button";
+import Box from "@material-ui/core/Box";
 
 const highschoolWeightClass = [
   106,
@@ -46,10 +48,29 @@ class App extends Component {
         console.log(err);
       });
   }
+  wrestlingLevel() {
+    const { wrestlingLevel } = this.state;
+    if (wrestlingLevel == "varcity") {
+    }
+  }
   render() {
-    const { tournamentID } = this.state;
+    const { tournamentID, wrestlingLevel } = this.state;
 
-    return <Container>tournament id is {tournamentID}</Container>;
+    return (
+      <Container>
+        tournament id is {tournamentID}
+        <Box display="flex" flexdirection="row" flexWrap="wrap">
+          {wrestlingLevel == "Varcity" &&
+            highschoolWeightClass.map(weightClassButtons => (
+              <Box m={2}>
+                <Button size="large" variant="contained">
+                  {weightClassButtons}
+                </Button>
+              </Box>
+            ))}
+        </Box>
+      </Container>
+    );
   }
 }
 export default App;
