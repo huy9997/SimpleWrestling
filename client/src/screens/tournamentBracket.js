@@ -5,12 +5,16 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cards: []
+      cards: [],
+      tournamentID: ""
     };
+  }
+  componentDidMount() {
+    this.setState({ tournamentID: this.props.location.state.tournamentID });
   }
 
   render() {
-    const tournamentID = this.props.location.state.tournamentID;
+    const { tournamentID } = this.state;
     return <div>tournament id is {tournamentID}</div>;
   }
 }
