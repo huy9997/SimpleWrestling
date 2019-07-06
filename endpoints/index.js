@@ -13,6 +13,7 @@ const tournamentCreateBrackets = require("./tournamentCreateBrackets");
 const tournamentMatchResults = require("./tournamentMatchResults");
 const getTournamentCardData = require("./getTournamentCardData");
 const searchTournament = require("./searchTournament");
+const getTournamentSignUps = require("./getTournamentSignUps");
 
 router.use(cors());
 
@@ -41,5 +42,6 @@ router.use("/tournamentBrackets", tournamentBrackets);
 router.use("/tournamentMatchResults", tournamentMatchResults);
 router.use("/getTournamentCardData", getTournamentCardData);
 router.use("/searchTournament", searchTournament);
+router.use("/getTournamentSignUps", getTournamentSignUps);
 
 module.exports = router;

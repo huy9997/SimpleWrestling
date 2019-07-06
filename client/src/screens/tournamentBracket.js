@@ -26,7 +26,8 @@ class App extends Component {
     this.state = {
       cards: [],
       tournamentID: "",
-      wrestlingLevel: ""
+      wrestlingLevel: "",
+      wrestlersBracketIDs: []
     };
   }
   componentDidMount() {
@@ -51,12 +52,21 @@ class App extends Component {
   onClickBracket = weightClass => {
     const { tournamentID } = this.state;
     //getting bracket data
-    axios.get("api/tournamentBrackets", {
-      params: {
-        tournament_id: tournamentID,
-        weight_class_id: weightClass
-      }
-    });
+    console.log(tournamentID, " tournament ID", weightClass, "weightclass");
+    axios
+      .get("api/getTournamentSignUps", {
+        params: {
+          tournament_id: tournamentID,
+          tournament_weight_class: weightClass
+        }
+      })
+      .then(weightClassBracket => {
+        this.setState({ wrestlersBracketIDs: weightClassBracket });
+        console.log(weightClassBracket);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
   render() {
     const { tournamentID, wrestlingLevel } = this.state;

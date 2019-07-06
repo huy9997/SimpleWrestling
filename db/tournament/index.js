@@ -7,5 +7,6 @@ module.exports = {
   InsertMatchResults: require("./insertMatchResults"),
   GetTournamentCardData: require("./GetTournamentCardData"),
   GetWrestlerBracketData: require("./getWrestlerBracket"),
-  GetTournamentLevel: require("./getTournamentLevel")
+  GetTournamentLevel: require("./getTournamentLevel"),
+  GetTournamentSignUps: require("./getTournamentSignUps")
 };
