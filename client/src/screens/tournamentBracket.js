@@ -38,7 +38,9 @@ class App extends Component {
         }
       })
       .then(tournamentLevel => {
-        console.log(tournamentLevel.data[0].wrestling_level);
+        this.setState({
+          wrestlingLevel: tournamentLevel.data[0].wrestling_level
+        });
       })
       .catch(err => {
         console.log(err);
