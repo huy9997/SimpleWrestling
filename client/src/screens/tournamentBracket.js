@@ -27,7 +27,7 @@ class App extends Component {
       cards: [],
       tournamentID: "",
       wrestlingLevel: "",
-      wrestlersBracketIDs: []
+      wrestlersBracketData: []
     };
   }
   componentDidMount() {
@@ -60,9 +60,15 @@ class App extends Component {
         }
       })
       .then(weightClassBracket => {
-        this.setState({ wrestlersBracketIDs: weightClassBracket.data });
-        console.log(this.state.wrestlersBracketIDs, "state");
-        //get the wrestler data
+        this.setState({ wrestlersBracketData: weightClassBracket.data });
+        console.log(this.state.wrestlersBracketData, "state");
+        //get the wrestler data from wrestler id
+
+        // axios.get("/", {
+        //   params: {
+        //     wrestler_ids: weightClassBracket.data
+        //   }
+        // });
       })
       .catch(err => {
         console.log(err);
@@ -89,7 +95,6 @@ class App extends Component {
                 </Button>
               </Box>
             ))}
-          {wrestlersBracketIDs.map()}
         </Box>
       </Container>
     );
