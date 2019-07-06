@@ -16,5 +16,18 @@ router.get("/", (req, res) => {
       res.json("their has been a error please try again");
     });
 });
+router.get("/tournamentLevel", (req, res) => {
+  const { tournament_id } = req.query;
+  values = [tournament_id];
+  tournaments
+    .GetTournamentLevel(values)
+    .then(tournamentLevelData => {
+      res.json(tournamentLevelData);
+    })
+    .catch(err => {
+      console.log(errs);
+      res.json("their has been an error in getting the tournament");
+    });
+});
 
 module.exports = router;
