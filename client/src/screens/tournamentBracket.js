@@ -48,8 +48,15 @@ class App extends Component {
         console.log(err);
       });
   }
-  onClickBracket = e => {
-    console.log("clicked", e);
+  onClickBracket = weightClass => {
+    const { tournamentID } = this.state;
+    //getting bracket data
+    axios.get("api/tournamentBrackets", {
+      params: {
+        tournament_id: tournamentID,
+        weight_class_id: weightClass
+      }
+    });
   };
   render() {
     const { tournamentID, wrestlingLevel } = this.state;
