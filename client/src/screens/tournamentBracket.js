@@ -48,11 +48,9 @@ class App extends Component {
         console.log(err);
       });
   }
-  wrestlingLevel() {
-    const { wrestlingLevel } = this.state;
-    if (wrestlingLevel == "varcity") {
-    }
-  }
+  onClickBracket = e => {
+    console.log("clicked", e);
+  };
   render() {
     const { tournamentID, wrestlingLevel } = this.state;
 
@@ -62,8 +60,14 @@ class App extends Component {
         <Box display="flex" flexdirection="row" flexWrap="wrap">
           {wrestlingLevel == "Varcity" &&
             highschoolWeightClass.map(weightClassButtons => (
-              <Box m={2}>
-                <Button size="large" variant="contained">
+              <Box m={2} key={weightClassButtons.value}>
+                <Button
+                  size="large"
+                  variant="contained"
+                  onClick={() => {
+                    this.onClickBracket(weightClassButtons);
+                  }}
+                >
                   {weightClassButtons}
                 </Button>
               </Box>
