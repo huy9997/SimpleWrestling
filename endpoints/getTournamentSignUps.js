@@ -5,17 +5,15 @@ let search = require("../db/search");
 
 router.get("/", (req, res) => {
   const { tournament_id, tournament_weight_class } = req.query;
-  let wrestlerData = [];
   tournament
     .GetTournamentSignUps([tournament_id, tournament_weight_class])
     .then(tournamentSignupResults => {
-      console.log(tournamentSignupResults[0].user_wrestler_id);
+      let wrestlerData = [];
       for (let i = 0; i < tournamentSignupResults.length; i++) {
         search
           .SearchWrestler([tournamentSignupResults[i].user_wrestler_id])
           .then(wrestlerResults => {
             wrestlerData.push(wrestlerResults);
-            res.json(wrestlerData);
           })
           .catch(err => {
             console.log(err);

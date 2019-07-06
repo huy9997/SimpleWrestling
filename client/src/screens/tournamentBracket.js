@@ -50,7 +50,7 @@ class App extends Component {
       });
   }
   onClickBracket = weightClass => {
-    const { tournamentID } = this.state;
+    const { tournamentID, wrestlersBracketData } = this.state;
     //getting bracket data
     axios
       .get("api/getTournamentSignUps", {
@@ -60,15 +60,9 @@ class App extends Component {
         }
       })
       .then(weightClassBracket => {
+        console.log(weightClassBracket.data, "bracket stuff");
         this.setState({ wrestlersBracketData: weightClassBracket.data });
-        console.log(this.state.wrestlersBracketData, "state");
-        //get the wrestler data from wrestler id
-
-        // axios.get("/", {
-        //   params: {
-        //     wrestler_ids: weightClassBracket.data
-        //   }
-        // });
+        console.log(wrestlersBracketData, "state");
       })
       .catch(err => {
         console.log(err);
