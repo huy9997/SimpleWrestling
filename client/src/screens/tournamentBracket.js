@@ -30,10 +30,15 @@ class App extends Component {
   componentDidMount() {
     this.setState({ tournamentID: this.props.location.state.tournamentID });
     //send tournamentid in the get request
+    console.log(this.props.location.state.tournamentID, "tournamentid");
     axios
-      .get("./tournamentBrackets/tournamentLevel")
+      .get("api/tournamentBrackets/tournamentLevel", {
+        params: {
+          tournament_id: this.props.location.state.tournamentID
+        }
+      })
       .then(tournamentLevel => {
-        console.log(tournamentLevel);
+        console.log(tournamentLevel.data[0].wrestling_level);
       })
       .catch(err => {
         console.log(err);

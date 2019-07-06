@@ -18,6 +18,7 @@ router.get("/", (req, res) => {
 });
 router.get("/tournamentLevel", (req, res) => {
   const { tournament_id } = req.query;
+  console.log(req.query, " querys");
   values = [tournament_id];
   tournaments
     .GetTournamentLevel(values)
