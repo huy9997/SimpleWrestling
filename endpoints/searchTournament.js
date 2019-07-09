@@ -4,6 +4,7 @@ let searchDB = require("../db/search");
 
 router.post("/", (req, res) => {
   let { search } = req.body;
+  console.log(search);
   search = "%" + search + "%";
   searchDB
     .SearchTournament([search])

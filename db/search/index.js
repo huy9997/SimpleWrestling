@@ -3,5 +3,6 @@ module.exports = {
   SearchAdminEmail: require("./searchAdminEmail"),
   SearchWrestlerEmail: require("./searchWrestlerEmail"),
   SearchUniqueEmail: require("./searchForEmail"),
-  SearchTournament: require("./searchTournament")
+  SearchTournament: require("./searchTournament"),
+  SearchWrestlerTournamentData: require("./searchWrestlerTournamentData")
 };

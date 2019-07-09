@@ -51,6 +51,7 @@ class App extends Component {
   }
   onClickBracket = weightClass => {
     const { tournamentID, wrestlersBracketData } = this.state;
+    console.log("onlcick", weightClass);
     //getting bracket data
     axios
       .get("api/getTournamentSignUps", {
