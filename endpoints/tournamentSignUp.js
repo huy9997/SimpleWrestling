@@ -12,6 +12,7 @@ router.post("/", (req, res) => {
     req.user[0].id,
     tournament_id
   ];
+  console.log(values, "values from the frontend");
   tournament
     .SignUpForTournament(values)
     .then(signUpResults => {

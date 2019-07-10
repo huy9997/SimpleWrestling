@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
+import { Link } from "react-router-dom";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -19,7 +20,6 @@ const useStyles = makeStyles({
 
 const tournamentCard = props => {
   const classes = useStyles();
-
   return (
     <Card className={classes.card}>
       <CardActionArea>
@@ -38,9 +38,27 @@ const tournamentCard = props => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
+        <Button
+          size="small"
+          color="primary"
+          onClick={() => {
+            props.onClick(props.id);
+          }}
+        >
           Sign Up
         </Button>
+        <Link
+          size="small"
+          color="primary"
+          to={{
+            pathname: "/tournamentBracket",
+            state: {
+              tournamentID: props.tournamentID
+            }
+          }}
+        >
+          Brackets
+        </Link>
       </CardActions>
     </Card>
   );

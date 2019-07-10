@@ -5,6 +5,7 @@ import signup from "../screens/signup";
 import home from "../screens/home";
 import tournament from "../screens/tournament";
 import createTournament from "../screens/createTournament";
+import tournamentBracket from "../screens/tournamentBracket";
 
 import Navbar from "../components/generalComponents/navbar";
 
@@ -16,6 +17,7 @@ const Routes = () => (
     <Route exact path="/signup" component={signup} />
     <Route exact path="/tournament" component={tournament} />
     <Route exact path="/createTournament" component={createTournament} />
+    <Route excact path="/tournamentBracket" component={tournamentBracket} />
   </BrowserRouter>
 );
 
