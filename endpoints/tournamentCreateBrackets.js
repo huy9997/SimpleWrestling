@@ -6,10 +6,19 @@ router.post("/", (req, res) => {
   const {
     wrestler1_id,
     wrestler2_id,
+    bracket_position,
+    bout_number,
     weight_class_id,
     tournament_id
   } = req.body;
-  const values = [wrestler1_id, wrestler2_id, weight_class_id, tournament_id];
+  const values = [
+    wrestler1_id,
+    wrestler2_id,
+    bracket_position,
+    bout_number,
+    weight_class_id,
+    tournament_id
+  ];
   tournaments
     .InsertBracketMatches(values)
     .then(insertBracketsResults => {
