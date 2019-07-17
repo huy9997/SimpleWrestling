@@ -6,7 +6,8 @@ router.post("/", (req, res) => {
   const {
     wrestler1_id,
     wrestler2_id,
-    bracket_position,
+    wrestler1_bracket_position,
+    wrestler2_bracket_position,
     bout_number,
     weight_class_id,
     tournament_id
@@ -14,7 +15,8 @@ router.post("/", (req, res) => {
   const values = [
     wrestler1_id,
     wrestler2_id,
-    bracket_position,
+    wrestler1_bracket_position,
+    wrestler2_bracket_position,
     bout_number,
     weight_class_id,
     tournament_id

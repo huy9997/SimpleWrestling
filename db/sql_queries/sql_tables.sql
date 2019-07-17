@@ -66,7 +66,8 @@ CREATE TABLE BracketMatches
   "id" SERIAL PRIMARY KEY,
   "wrestler1_id" INTEGER UNIQUE,
   "wrestler2_id" INTEGER UNIQUE,
-  "bracket_positon" INTEGER,
+  "wrestler1_bracket_position" INTEGER,
+  "wrestler2_bracket_position" INTEGER,
   "bout_number" INTEGER,
   "weight_class_id" INTEGER REFERENCES WeightClasses(id),
   "tournament_id" INTEGER REFERENCES Tournament(id)
