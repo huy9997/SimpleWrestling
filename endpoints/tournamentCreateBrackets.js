@@ -3,35 +3,31 @@ const router = express.Router();
 const tournaments = require("../db/tournament");
 
 router.post("/", (req, res) => {
-  const {
-    wrestler1_id,
-    wrestler2_id,
-    wrestler1_bracket_position,
-    wrestler2_bracket_position,
-    bout_number,
-    weight_class_id,
-    tournament_id
-  } = req.body;
-  const values = [
-    wrestler1_id,
-    wrestler2_id,
-    wrestler1_bracket_position,
-    wrestler2_bracket_position,
-    bout_number,
-    weight_class_id,
-    tournament_id
-  ];
-  tournaments
-    .InsertBracketMatches(values)
-    .then(insertBracketsResults => {
-      res.json("you have successfully added the bracket");
-    })
-    .catch(err => {
-      console.log(err);
-      res.json(
-        "their was an error in creating a this bracket please try again"
-      );
-    });
+  const { wrestlerMatchesArray } = req.body;
+  console.log("wrestler arrya", wrestlerMatchesArray);
+  wrestlerMatchesArray.forEach(boutData => {
+    console.log("bout data", boutData);
+    const values = [
+      boutData.wrestler1_id,
+      boutData.wrestler2_id,
+      boutData.wrestler1_bracket_position,
+      boutData.wrestler2_bracket_position,
+      boutData.bout_number,
+      boutData.weight_class_id,
+      boutData.tournament_id
+    ];
+    tournaments
+      .InsertBracketMatches(values)
+      .then(insertBracketsResults => {
+        res.json("you have successfully added the bracket");
+      })
+      .catch(err => {
+        console.log(err);
+        res.json(
+          "their was an error in creating a this bracket please try again"
+        );
+      });
+  });
 });
 
 module.exports = router;
