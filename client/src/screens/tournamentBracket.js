@@ -76,7 +76,7 @@ class App extends Component {
       <Container>
         tournament id is {tournamentID}
         <Box display="flex" flexdirection="row" flexWrap="wrap">
-          {wrestlingLevel == "Varcity" &&
+          {wrestlingLevel === "Varcity" &&
             highschoolWeightClass.map(weightClassButtons => (
               <Box m={2} key={weightClassButtons.value}>
                 <Button
