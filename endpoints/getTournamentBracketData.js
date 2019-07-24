@@ -11,7 +11,12 @@ router.get("/", (req, res) => {
     .GetTournamentBrackets(values)
     .then(tournamentBracketResults => {
       tournamentBracketResults.forEach(element => {
-        wrestlerBracketInfo.push(element.bout_number);
+        search.SearchWrestler(wrestler1_id).then(results => {
+          wrestlerBracketInfo.push(results);
+        });
+        search.SearchWrestler(wrestler2_id).then(results => {
+          wrestlerBracketInfo.push(results);
+        });
       });
     })
     .catch(err => {
