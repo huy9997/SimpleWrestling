@@ -4,38 +4,31 @@ const tournaments = require("../db/tournament");
 
 router.post("/", (req, res) => {
   const { wrestlerMatchesArray } = req.body;
-  wrestlerMatchesArray.forEach(boutData => {
-    const values = [
-      boutData.wrestler1_id,
-      boutData.wrestler2_id,
-      boutData.wrestler1_bracket_position,
-      boutData.wrestler2_bracket_position,
-      boutData.bout_number,
-      boutData.weight_class_id,
-      boutData.tournament_id
-    ];
-    tournaments
-      .InsertBracketMatches(values)
-      .then(insertBracketsResults => {
-        res.json("you have successfully added the bracket");
-      })
-      .catch(err => {
-        res.json(
-          "their was an error in creating a this bracket please try again"
-        );
-      });
-  });
-});
-router.get("/", (req, res) => {
-  const { tournament_id, weight_class_id } = req.query;
-  values = [tournament_id, weight_class_id];
-  tournaments
-    .GetTournamentBrackets(values)
-    .then(tournamentBracketResults => {
-      res.json(tournamentBracketResults);
+
+  wrestlerMatchesArray
+    .forEach(boutData => {
+      const values = [
+        boutData.weight_class,
+        boutData.tournament_wrestler_rank,
+        boutData.wrestler_bracket_position,
+        boutData.wrestler_name,
+        boutData.wrestler_high_school,
+        boutData.wrestler_record,
+        boutData.wrestler_grade,
+        boutData.tournament_id
+      ];
+      tournaments
+        .InsertBracketMatches(values)
+        .then(insertBracketsResults => {})
+        .catch(err => {
+          console.log(err);
+          res.json(
+            "their was an error in creating a this bracket please try again"
+          );
+        });
     })
-    .catch(err => {
-      res.json("error in getting  bracket data :(");
+    .then(completedArray => {
+      res.json("you have looped through the entire array");
     });
 });
 

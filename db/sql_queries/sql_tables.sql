@@ -84,7 +84,7 @@ CREATE TABLE BracketMatches
   "wrestler_record" VARCHAR,
   "wrestler_grade" INTEGER,
   "tournament_id" INTEGER REFERENCES Tournament(id)
-)
+);
 
 CREATE TABLE BracketMatchResults
 (
