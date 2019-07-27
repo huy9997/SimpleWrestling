@@ -1,13 +1,13 @@
 module.exports = {
-  CreateTournament: require("./createTournament"),
+  CreateTournament: require("./insert/createTournament"),
   SignUpForTournament: require("./tournamentSignUp"),
-  getWeightClassBouts: require("./getWeightClassBouts"),
+  getWeightClassBouts: require("./get/weightClassBouts"),
   InsertWeightClass: require("./insertWeightClasses"),
-  InsertBracketMatches: require("./insertBracketMatches"),
-  InsertMatchResults: require("./insertMatchResults"),
-  GetTournamentCardData: require("./GetTournamentCardData"),
-  GetWrestlerBracketData: require("./getWrestlerBracket"),
-  GetTournamentLevel: require("./getTournamentLevel"),
-  GetTournamentSignUps: require("./getTournamentSignUps"),
-  GetTournamentBrackets: require("./getTournamentBrackets")
+  InsertBracketMatches: require("./insert/bracketMatches"),
+  InsertMatchResults: require("./insert/matchResults"),
+  GetTournamentCardData: require("./get/tournamentCardData"),
+  GetWrestlerBracketData: require("./get/wrestlerBracket"),
+  GetTournamentLevel: require("./get/tournamentLevel"),
+  GetTournamentSignUps: require("./get/tournamentSignUps"),
+  GetTournamentBrackets: require("./get/tournamentBrackets")
 };

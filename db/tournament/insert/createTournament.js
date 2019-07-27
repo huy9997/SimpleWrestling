@@ -1,4 +1,4 @@
-const db = require("../connection");
+const db = require("../../connection");
 
 const createTournament = value => {
   const CREATE_TOURNAMENT = `INSERT INTO tournament (

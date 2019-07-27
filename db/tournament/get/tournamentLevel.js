@@ -1,4 +1,4 @@
-const db = require("../connection");
+const db = require("../../connection");
 
 const getTournamentLevel = value => {
   const GET_TOURNAMENT_LEVEL = `SELECT wrestling_level from tournament where id=$1`;

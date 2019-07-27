@@ -4,16 +4,16 @@ const router = express.Router();
 const cors = require("cors");
 
 const signup = require("./signup");
-const auth = require("./auth");
-const createTournament = require("./createTournament");
-const tournamentSignUp = require("./tournamentSignUp");
-const tournamentWeightClasses = require("./tournamentWeightClasses");
-const tournamentCreateBrackets = require("./tournamentCreateBrackets");
-const tournamentMatchResults = require("./tournamentMatchResults");
+const auth = require("./auth/auth");
+const createTournament = require("./tournament-insert/createTournament");
+const tournamentSignUp = require("./tournament-insert/tournamentSignUp");
+const tournamentWeightClasses = require("./tournament-insert/tournamentWeightClasses");
+const tournamentCreateBrackets = require("./tournament-insert/tournamentCreateBrackets");
+const tournamentMatchResults = require("./tournament-insert/tournamentMatchResults");
 const getTournamentCardData = require("./getTournamentCardData");
 const searchTournament = require("./searchTournament");
 const getTournamentSignUps = require("./getTournamentSignUps");
-const getTournamentBracketData = require("./getTournamentBracketData");
+const getTournamentBracketData = require("./tournament-get/getTournamentBracketData");
 
 router.use(cors());
 

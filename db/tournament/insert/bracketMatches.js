@@ -1,4 +1,4 @@
-const db = require("../connection");
+const db = require("../../connection");
 
 const insertBracketMatches = value => {
   const INSERT_BRACKET_MATCHES = `INSERT INTO bracketmatches (

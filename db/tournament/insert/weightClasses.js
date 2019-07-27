@@ -1,4 +1,4 @@
-const db = require("../connection");
+const db = require("../../connection");
 
 const insertWeightClass = value => {
   const INSERT_WEIGHT_CLASS = `INSERT INTO weightclasses (
@@ -6,7 +6,7 @@ const insertWeightClass = value => {
     tournament_id
     ) 
     VALUES($1,$2);`;
-  return db.query(INSERT_WEIGHT_CLASS, value);
+  return db.query(INSERT_WEIGwHT_CLASS, value);
 };
 
 module.exports = insertWeightClass;

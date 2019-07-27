@@ -1,4 +1,4 @@
-const db = require("../connection");
+const db = require("../../connection");
 
 const getTournamentCardData = value => {
   const GET_TOURNAMENT_CARD_DATA = `SELECT
