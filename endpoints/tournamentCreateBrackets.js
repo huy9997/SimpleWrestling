@@ -6,15 +6,26 @@ router.post("/", (req, res) => {
   const { wrestlerMatchesArray } = req.body;
 
   wrestlerMatchesArray.forEach(boutData => {
+    const {
+      weight_class,
+      tournament_wrestler_rank,
+      wrestler_bracket_position,
+      wrestler_name,
+      wrestler_high_school,
+      wrestler_record,
+      wrestler_grade,
+      tournament_ids
+    } = boutData;
+
     const values = [
-      boutData.weight_class,
-      boutData.tournament_wrestler_rank,
-      boutData.wrestler_bracket_position,
-      boutData.wrestler_name,
-      boutData.wrestler_high_school,
-      boutData.wrestler_record,
-      boutData.wrestler_grade,
-      boutData.tournament_id
+      weight_class,
+      tournament_wrestler_rank,
+      wrestler_bracket_position,
+      wrestler_name,
+      wrestler_high_school,
+      wrestler_record,
+      wrestler_grade,
+      tournament_ids
     ];
     tournaments
       .InsertBracketMatches(values)
