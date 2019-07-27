@@ -76,7 +76,7 @@ CREATE TABLE BracketMatches
 CREATE TABLE BracketMatches
 (
   "id" SERIAL PRIMARY KEY,
-  "weight_class" INTEGER UNIQUE,
+  "weight_class" INTEGER,
   "tournament_wrestler_rank" INTEGER,
   "wrestler_bracket_position" INTEGER,
   "wrestler_name" VARCHAR,
