@@ -6,7 +6,7 @@ const insertWeightClass = value => {
     tournament_id
     ) 
     VALUES($1,$2);`;
-  return db.query(INSERT_WEIGwHT_CLASS, value);
+  return db.query(INSERT_WEIGHT_CLASS, value);
 };
 
 module.exports = insertWeightClass;
