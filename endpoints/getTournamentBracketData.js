@@ -4,27 +4,19 @@ let tournaments = require("../db/tournament");
 let search = require("../db/search");
 
 router.get("/", (req, res) => {
-  const { tournament_id, weight_class_id } = req.query;
-  values = [tournament_id, weight_class_id];
-  let wrestlerBracketInfo = [];
+  const { weight_class, tournament_id } = req.query;
+
+  values = [tournament_id, weight_class];
+  //get weight class brackets
+  console.log(values);
   tournaments
-    .GetTournamentBrackets(values)
-    .then(tournamentBracketResults => {
-      tournamentBracketResults.forEach(element => {
-        search.SearchWrestler(wrestler1_id).then(results => {
-          wrestlerBracketInfo.push(results);
-        });
-        search.SearchWrestler(wrestler2_id).then(results => {
-          wrestlerBracketInfo.push(results);
-        });
-      });
+    .getWeightClassBouts(values)
+    .then(boutsResults => {
+      res.json(boutsResults);
     })
     .catch(err => {
-      res.json("error in getting  bracket data :(");
-    })
-    .then(results => {
-      console.log(wrestlerBracketInfo);
-      res.json(wrestlerBracketInfo);
+      console.log(err);
+      res.json("their has been a error please try again");
     });
 });
 module.exports = router;
