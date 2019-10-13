@@ -3,7 +3,7 @@ const router = express.Router();
 
 const cors = require("cors");
 
-const signup = require("./signup");
+const signup = require("./auth/signup");
 const auth = require("./auth");
 const createTournament = require("./createTournament");
 const tournamentSignUp = require("./tournamentSignUp");

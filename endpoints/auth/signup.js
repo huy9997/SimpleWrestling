@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const signup = require("../db/signUp/");
-const search = require("../db/search");
+const signup = require("../../db/signUp");
+const search = require("../../db/search");
 
 const bcrypt = require("bcrypt");
 
