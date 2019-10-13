@@ -3,7 +3,6 @@ const router = express.Router();
 
 const cors = require("cors");
 
-const signup = require("./auth/signup");
 const auth = require("./auth");
 const createTournament = require("./admin/createTournament");
 const tournamentSignUp = require("./tournamentSignUp");
@@ -33,8 +32,8 @@ let isWrestler = (req, res, next) => {
   }
 };
 
-router.use("/signup", signup);
-router.use("/auth", auth);
+router.use("/signup", auth.signup);
+router.use("/auth", auth.auth);
 router.use("/createTournament", isAdmin, createTournament);
 router.use("/tournamentWeightClasses", isAdmin, tournamentWeightClasses);
 router.use("/tournamentCreateBrackets", isAdmin, tournamentCreateBrackets);
