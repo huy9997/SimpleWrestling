@@ -5,11 +5,11 @@ const cors = require("cors");
 
 const signup = require("./auth/signup");
 const auth = require("./auth");
-const createTournament = require("./createTournament");
+const createTournament = require("./admin/createTournament");
 const tournamentSignUp = require("./tournamentSignUp");
 const tournamentBrackets = require("./tournamentBrackets");
-const tournamentWeightClasses = require("./tournamentWeightClasses");
-const tournamentCreateBrackets = require("./tournamentCreateBrackets");
+const tournamentWeightClasses = require("./admin/tournamentWeightClasses");
+const tournamentCreateBrackets = require("./admin/tournamentCreateBrackets");
 const tournamentMatchResults = require("./tournamentMatchResults");
 const getTournamentCardData = require("./getTournamentCardData");
 const searchTournament = require("./searchTournament");
