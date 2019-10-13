@@ -5,10 +5,12 @@ const cors = require("cors");
 
 const auth = require("./auth");
 const createTournament = require("./admin/createTournament");
+const tournamentCreateBrackets = require("./admin/tournamentCreateBrackets");
+const tournamentWeightClasses = require("./admin/tournamentWeightClasses");
+const admin = require("./admin");
+
 const tournamentSignUp = require("./tournamentSignUp");
 const tournamentBrackets = require("./tournamentBrackets");
-const tournamentWeightClasses = require("./admin/tournamentWeightClasses");
-const tournamentCreateBrackets = require("./admin/tournamentCreateBrackets");
 const tournamentMatchResults = require("./tournamentMatchResults");
 const getTournamentCardData = require("./getTournamentCardData");
 const searchTournament = require("./searchTournament");
@@ -34,9 +36,13 @@ let isWrestler = (req, res, next) => {
 
 router.use("/signup", auth.signup);
 router.use("/auth", auth.auth);
-router.use("/createTournament", isAdmin, createTournament);
-router.use("/tournamentWeightClasses", isAdmin, tournamentWeightClasses);
-router.use("/tournamentCreateBrackets", isAdmin, tournamentCreateBrackets);
+router.use("/createTournament", isAdmin, admin.createTournament);
+router.use("/tournamentWeightClasses", isAdmin, admin.tournamentWeightClasses);
+router.use(
+  "/tournamentCreateBrackets",
+  isAdmin,
+  admin.tournamentCreateBrackets
+);
 router.use("/tournamentSignUp", isWrestler, tournamentSignUp);
 router.use("/tournamentBrackets", tournamentBrackets);
 router.use("/tournamentMatchResults", tournamentMatchResults);
