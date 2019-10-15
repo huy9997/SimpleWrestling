@@ -102,8 +102,6 @@ class App extends Component {
       description,
       tournament_start_date,
       tournament_end_date,
-      tournament_logo,
-      tournament_flier,
       wrestling_style,
       wrestling_level
     } = this.state;
