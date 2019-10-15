@@ -1,7 +1,7 @@
 let express = require("express");
 let router = express.Router();
-let tournament = require("../db/tournament");
-let search = require("../db/search");
+let tournament = require("../../db/tournament");
+let search = require("../../db/search");
 
 router.get("/", (req, res) => {
   const { tournament_id, tournament_weight_class } = req.query;

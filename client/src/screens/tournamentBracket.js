@@ -70,7 +70,7 @@ class App extends Component {
       });
   };
   render() {
-    const { tournamentID, wrestlingLevel, wrestlersBracketIDs } = this.state;
+    const { tournamentID, wrestlingLevel } = this.state;
 
     return (
       <Container>

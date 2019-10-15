@@ -1,7 +1,6 @@
 let express = require("express");
 let router = express.Router();
-let tournament = require("../db/tournament");
-let format = require("date-format");
+let tournament = require("../../db/tournament");
 
 router.get("/", (req, res) => {
   tournament

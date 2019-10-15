@@ -3,18 +3,10 @@ const router = express.Router();
 
 const cors = require("cors");
 
-const signup = require("./signup");
 const auth = require("./auth");
-const createTournament = require("./createTournament");
-const tournamentSignUp = require("./tournamentSignUp");
-const tournamentBrackets = require("./tournamentBrackets");
-const tournamentWeightClasses = require("./tournamentWeightClasses");
-const tournamentCreateBrackets = require("./tournamentCreateBrackets");
-const tournamentMatchResults = require("./tournamentMatchResults");
-const getTournamentCardData = require("./getTournamentCardData");
-const searchTournament = require("./searchTournament");
-const getTournamentSignUps = require("./getTournamentSignUps");
-const getTournamentBracketData = require("./getTournamentBracketData");
+const admin = require("./admin");
+const public = require("./public");
+const wrestler = require("./wrestler");
 
 router.use(cors());
 
@@ -33,17 +25,21 @@ let isWrestler = (req, res, next) => {
   }
 };
 
-router.use("/signup", signup);
-router.use("/auth", auth);
-router.use("/createTournament", isAdmin, createTournament);
-router.use("/tournamentWeightClasses", isAdmin, tournamentWeightClasses);
-router.use("/tournamentCreateBrackets", isAdmin, tournamentCreateBrackets);
-router.use("/tournamentSignUp", isWrestler, tournamentSignUp);
-router.use("/tournamentBrackets", tournamentBrackets);
-router.use("/tournamentMatchResults", tournamentMatchResults);
-router.use("/getTournamentCardData", getTournamentCardData);
-router.use("/searchTournament", searchTournament);
-router.use("/getTournamentSignUps", getTournamentSignUps);
-router.use("/getTournamentBracketData", getTournamentBracketData);
+router.use("/signup", auth.signup);
+router.use("/auth", auth.auth);
+router.use("/createTournament", isAdmin, admin.createTournament);
+router.use("/tournamentWeightClasses", isAdmin, admin.tournamentWeightClasses);
+router.use(
+  "/tournamentCreateBrackets",
+  isAdmin,
+  admin.tournamentCreateBrackets
+);
+router.use("/tournamentSignUp", isWrestler, wrestler.tournamentSignUp);
+router.use("/tournamentBrackets", public.tournamentBrackets);
+router.use("/tournamentMatchResults", public.tournamentMatchResults);
+router.use("/getTournamentCardData", public.tournamentCardData);
+router.use("/searchTournament", public.searchTournament);
+router.use("/getTournamentSignUps", public.getTournamentSignUps);
+router.use("/tournamentBracketData", public.tournamentBracketData);
 
 module.exports = router;

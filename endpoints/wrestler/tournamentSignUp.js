@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const tournament = require("../db/tournament");
-const search = require("../db/search");
+const tournament = require("../../db/tournament");
 
 router.post("/", (req, res) => {
   const { seeding_notes, tournament_id, tournament_weight_class } = req.body;

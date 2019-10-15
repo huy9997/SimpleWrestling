@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const tournaments = require("../db/tournament");
+const tournaments = require("../../db/tournament");
 
 router.post("/", (req, res) => {
   const { wrestlerMatchesArray } = req.body;

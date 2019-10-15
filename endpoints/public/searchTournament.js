@@ -1,6 +1,6 @@
 let express = require("express");
 let router = express.Router();
-let searchDB = require("../db/search");
+let searchDB = require("../../db/search");
 
 router.post("/", (req, res) => {
   let { search } = req.body;
