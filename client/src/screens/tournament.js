@@ -96,9 +96,7 @@ class App extends Component {
       })
       .catch(err => {
         console.log(err);
-        // setup a alert
       });
-    //post request for the wrestler sign up then closing out of the modal
   };
   onModalClose = e => {
     this.setState({ modal: false });

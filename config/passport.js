@@ -23,7 +23,6 @@ module.exports = function(passport) {
             if (!bcrypt.compareSync(password, user[0].password)) {
               return callback(null, false, { messasge: "Incorrect password" });
             }
-            console.log("database");
             console.log(user, "user in the db");
             return callback(null, user);
           })

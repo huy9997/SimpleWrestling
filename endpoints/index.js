@@ -26,7 +26,7 @@ let isWrestler = (req, res, next) => {
 };
 
 router.use("/signup", auth.signup);
-router.use("/auth", auth.auth);
+router.use("/auth", auth.signin);
 router.use("/createTournament", isAdmin, admin.createTournament);
 router.use("/tournamentWeightClasses", isAdmin, admin.tournamentWeightClasses);
 router.use(

@@ -29,7 +29,6 @@ class App extends Component {
   };
 
   onsubmit = e => {
-    console.log("submit button");
     axios
       .post("api/auth/login", {
         email: this.state.email,
