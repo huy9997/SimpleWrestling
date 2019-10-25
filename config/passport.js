@@ -15,6 +15,7 @@ module.exports = function(passport) {
     new LocalStrategy(
       { usernameField: "email" },
       (email, password, callback) => {
+        console.log(email, password);
         search
           .SearchUniqueEmail([email])
           .then(user => {
