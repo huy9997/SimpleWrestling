@@ -30,7 +30,7 @@ class App extends Component {
 
   onsubmit = e => {
     axios
-      .post("api/auth/login", {
+      .post("api/auth/signin", {
         email: this.state.email,
         password: this.state.password
       })
