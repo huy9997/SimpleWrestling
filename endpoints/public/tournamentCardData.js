@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
       res.json(cardData);
     })
     .catch(err => {
-      res.json("there was an error in ");
+      console.log("Error: ", err);
     });
 });
 router.get("/tournament", (req, res) => {

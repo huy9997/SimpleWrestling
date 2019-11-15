@@ -1,0 +1,16 @@
+[
+  {
+    "id": 0,
+    "image_url": "../../images/wrastle0.jpeg",
+    "title": "These kids are changing the way we wrestle.",
+    "date": "September 28, 1969",
+    "tournament_id": 12
+  },
+  {
+    "id": 1,
+    "image_url": "../../images/wrastle1.jpeg",
+    "title": "This high school trumps all!",
+    "date": "October 31, 2019",
+    "tournament_id": 13
+  }
+]

@@ -2,10 +2,10 @@ import React from "react";
 import { FixedSizeList as List } from "react-window";
 import Item from "./Item";
 
-async function getImages() {
-  let response = await fetch("");
+const getImages = async () => {
+  let response = await fetch("/getTournamentCardData");
   return await response.json();
-}
+};
 
 export default class Container extends React.Component {
   constructor(props) {
@@ -17,10 +17,13 @@ export default class Container extends React.Component {
   }
 
   componentDidMount() {
-    getImages().then(url => {
-      this.setState({
-        images: [...this.state.images, require(url)]
-      });
+    // getImages().then(url => {
+    //   this.setState({
+    //     images: [...this.state.images, require(url)]
+    //   });
+    // });
+    this.setState({
+      images: this.props.images
     });
   }
 

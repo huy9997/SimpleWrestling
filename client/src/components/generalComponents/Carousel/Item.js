@@ -7,7 +7,7 @@ export default class Item extends React.Component {
 
   render() {
     return (
-      <div className="carousel-item active">
+      <div className="carousel-item">
         <img className="d-block w-100" src={this.props.imageUrl} alt={this.props.index} />
       </div>
     );

@@ -14,10 +14,10 @@ class App extends Component {
 
   componentDidMount() {
     axios
-      .get("/api/getTournamentCardData")
-      .then(tournamentCardData => {
+      .get("/getTournamentCardData")
+      .then(tournamentCard => {
         this.setState({
-          cards: tournamentCardData.data
+          cards: tournamentCard
         });
       })
       .catch(err => {
@@ -30,19 +30,7 @@ class App extends Component {
     return (
       <Container component="main" display="flex" flexDirection="column">
         <Carousel />
-        <Box display="flex" flexDirection="row">
-          {cards.map(card => (
-            <Box m={1} width="100%">
-              <Card
-                title={card.name}
-                date={card.tournament_start_date}
-                imgURL={
-                  "https://s3.amazonaws.com/sidearm.sites/hawkeyesports.com/images/2018/3/20/180317NCAA0898.JPG"
-                }
-              />
-            </Box>
-          ))}
-        </Box>
+
       </Container>
     );
   }
