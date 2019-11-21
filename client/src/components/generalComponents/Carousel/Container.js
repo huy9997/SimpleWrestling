@@ -1,6 +1,8 @@
 import React from "react";
 import { FixedSizeList as List } from "react-window";
 import Item from "./Item";
+import TournamentCard from "../TournamentCard";
+const data = require("../../../test/fakerData.json");
 
 const getImages = async () => {
   let response = await fetch("/getTournamentCardData");
@@ -12,7 +14,8 @@ export default class Container extends React.Component {
     super(props);
 
     this.state = {
-      images: []
+      cards: [],
+      className: ""
     };
   }
 
@@ -23,17 +26,28 @@ export default class Container extends React.Component {
     //   });
     // });
     this.setState({
-      images: this.props.images
+      cards: data
     });
   }
 
+  className = "";
+
   render() {
-    return (
-      <div className="carousel-inner">
-        {this.state.images.map((image, index) => {
-          return <Item imageUrl={image} key={index} index={index} />;
-        })}
-      </div>
-    );
+    return this.state.cards.map((card, key) => {
+      key === 0
+        ? (this.className = "carousel-inner active")
+        : (this.className = "carousel-inner");
+      return (
+        <div className={this.className}>
+          <TournamentCard
+            imgURL={card.image_url}
+            key={key}
+            date={card.date}
+            title={card.title}
+            tournamentID={card.tournament_id}
+          />
+        </div>
+      );
+    });
   }
 }

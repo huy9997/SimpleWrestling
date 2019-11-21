@@ -7,7 +7,7 @@ export default class Button extends React.Component {
 
     render() {
         return (
-            <a className={"carousel-control-" + this.props.dataSlide} href="#carouselExampleControls" role="button" data-slide={this.props.dataSlide}>
+            <a className={"carousel-control-" + this.props.dataSlide + ""} href="#carouselExampleControls" role="button" data-slide={this.props.dataSlide}>
                 <span className="carousel-control-prev-icon" aria-hidden="true" />
                 <span className="sr-only">Previous</span>
             </a>

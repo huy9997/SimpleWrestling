@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Box from "@material-ui/core/Box";
 import Carousel from "../components/generalComponents/Carousel";
-import Card from "../components/generalComponents/card";
 import Container from "@material-ui/core/Container";
 class App extends Component {
   constructor(props) {
@@ -17,7 +15,7 @@ class App extends Component {
       .get("/getTournamentCardData")
       .then(tournamentCard => {
         this.setState({
-          cards: tournamentCard
+          cards: require("../test/fakerData.json")
         });
       })
       .catch(err => {
@@ -26,13 +24,17 @@ class App extends Component {
   }
 
   render() {
-    var cards = this.state.cards;
     return (
-      <Container component="main" display="flex" flexDirection="column">
-        <Carousel />
+      <>
+        <div style={{ padding: 40, backgroundColor: "#3f51b5", width: "40%", alignItems: 'center' }}>
+          <Carousel />
+        </div>
+        <div>
 
-      </Container>
+        </div>
+      </>
     );
   }
 }
+
 export default App;

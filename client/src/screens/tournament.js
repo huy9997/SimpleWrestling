@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Box from "@material-ui/core/Box";
-import Card from "../components/generalComponents/card";
+import Card from "../components/generalComponents/TournamentCard";
 import Container from "@material-ui/core/Container";
 import { Button } from "@material-ui/core";
 import Input from "@material-ui/core/Input";

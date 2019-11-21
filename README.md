@@ -44,4 +44,4 @@ Run Backend
 - cd db/sql_queries/sql_tables.sql
 - run those sql queries to have working tables
 
-2. run "node index.js" in the root of the project
+2. run "node index2.js" in the root of the project

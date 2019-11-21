@@ -6,8 +6,7 @@ export default class Test extends Component {
   render() {
     return (
       <>
-        <Carousel />
-        <AdContainer />
+        <Carousel style={{ height: 400 }}/>
       </>
     );
   }
