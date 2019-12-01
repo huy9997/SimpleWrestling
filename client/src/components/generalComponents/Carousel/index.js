@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-import axios from 'axios'
+import axios from "axios";
 import TournamentCard from "../TournamentCard";
-import 'slick-carousel/slick/slick-theme.css';
-import 'slick-carousel/slick/slick.css';
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 const data = require("../../../test/fakerData.json");
 
 export default class Carousel extends Component {
@@ -19,20 +19,21 @@ export default class Carousel extends Component {
       infinite: true,
       speed: 500,
       adaptiveHeight: true,
-      lazyLoad: 'ondemand'
+      lazyLoad: "ondemand"
     };
   }
 
   getImages = async () => {
-    await axios.get("/getTournamentCardData")
-        .then( tournamentCards => {
-          this.setState({
-            cards: tournamentCards
-          })
-        })
-        .catch( error => {
-          console.log(error);
-        })
+    await axios
+      .get("/getTournamentCardData")
+      .then(tournamentCards => {
+        this.setState({
+          cards: tournamentCards
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 
   componentDidMount() {
@@ -43,7 +44,7 @@ export default class Carousel extends Component {
 
   render() {
     return (
-      <Slider {...this.settings} >
+      <Slider {...this.settings}>
         {this.state.cards.map((card, key) => {
           return (
             <TournamentCard
