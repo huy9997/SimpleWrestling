@@ -4,6 +4,10 @@ import Carousel from "../components/generalComponents/Carousel";
 import Container from "@material-ui/core/Container";
 import Footer from "../components/generalComponents/Footer";
 import AdContainer from "../components/containers/AdContainer";
+
+let height = window.innerHeight;
+let reference = React.createRef();
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -28,19 +32,15 @@ class App extends Component {
   render() {
     return (
       <div style={styles.view}>
-        <div
-          style={{
-            padding: 40,
-            backgroundColor: "#3f51b5",
-            width: "40%",
-            alignItems: "center"
-          }}
-        >
-          <Carousel />
+        <div style={{ height: "65vh"}}>
+          <div style={styles.carousel} id="carousel">
+            <Carousel />
+          </div>
+          <div style={styles.adContainer}>
+            <AdContainer/>
+          </div>
         </div>
-        <div>
-          <AdContainer />
-        </div>
+
       </div>
     );
   }
@@ -48,11 +48,21 @@ class App extends Component {
 
 const styles = {
   view: {
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0
-  }
+    height: height
+  },
+  carousel: {
+    display: "inline-block",
+    padding: 40,
+    backgroundColor: "#3f51b5",
+    width: "50%",
+    height: "auto",
+    alignItems: "center"
+  },
+    adContainer: {
+      display: "inline-block",
+      float: "right",
+      height: "100vh"
+    }
 };
 
 export default App;

@@ -7,12 +7,12 @@ import test from "../screens/test";
 import tournament from "../screens/tournament";
 import createTournament from "../screens/createTournament";
 import tournamentBracket from "../screens/tournamentBracket";
-
-import Navbar from "../components/generalComponents/navbar";
+import Index from "../components/generalComponents/Navbar";
+import Footer from "../components/generalComponents/Footer";
 
 const Routes = () => (
   <BrowserRouter>
-    <Navbar />
+    <Index />
     <Route exact path="/" component={home} />
     <Route exact path="/test" component={test} />
     <Route exact path="/login" component={login} />
@@ -20,6 +20,7 @@ const Routes = () => (
     <Route exact path="/tournament" component={tournament} />
     <Route exact path="/createTournament" component={createTournament} />
     <Route excact path="/tournamentBracket" component={tournamentBracket} />
+    <Footer />
   </BrowserRouter>
 );
 

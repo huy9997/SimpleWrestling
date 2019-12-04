@@ -26,7 +26,7 @@ const TournamentCard = props => {
             image={image}
             title="Tournament picture"
             height="300"
-            width="100%"
+            width="80%"
             component="img"
           />
           <CardContent>
